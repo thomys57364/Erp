@@ -26,7 +26,7 @@ formulario.addEventListener("submit", function (e) {
     contrasenaIngresada === datosValidos.contrasena
   ) {
     mensajeError.style.display = "none"; // ocultamos si estaba visible
-    window.location.href = "../en_contruccion/en_construccion.html";
+    window.location.href = "modulos/modulos.html";
   } else {
     mensajeError.style.display = "block"; // mostramos el mensaje
   }
