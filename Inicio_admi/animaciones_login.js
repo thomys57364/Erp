@@ -6,16 +6,30 @@ window.addEventListener('load', () => {
       el.classList.add('visible-slide');
     });
   });
-  document.querySelector("form").addEventListener("submit", function (e) {
-    e.preventDefault(); // evita el envío tradicional
-  
-    // Verifica que todos los campos requeridos estén llenos
-    if (this.checkValidity()) {
-      // Si todo está correcto, redirige
-      window.location.href = "../en_contruccion/en_construccion.html";
-    } else {
-      // Si hay errores, permite que el navegador los muestre
-      this.reportValidity();
-    }
-  });
+  const formulario = document.getElementById("form-login");
+const mensajeError = document.getElementById("mensaje-error");
+
+// Simulación de datos válidos
+const datosValidos = {
+  correo: "admin@streetsync.com",
+  contrasena: "admin123"
+};
+
+formulario.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const correoIngresado = document.getElementById("correo").value;
+  const contrasenaIngresada = document.getElementById("contrasena").value;
+
+  if (
+    correoIngresado === datosValidos.correo &&
+    contrasenaIngresada === datosValidos.contrasena
+  ) {
+    mensajeError.style.display = "none"; // ocultamos si estaba visible
+    window.location.href = "../en_contruccion/en_construccion.html";
+  } else {
+    mensajeError.style.display = "block"; // mostramos el mensaje
+  }
+});
+
   

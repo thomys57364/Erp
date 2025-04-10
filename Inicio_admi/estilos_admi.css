@@ -132,6 +132,12 @@ footer img {
   opacity: 1;
   transform: translateX(0);
 }
+.mensaje-error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  display: none;
+}
 
 /* Responsive */
 @media (max-width: 900px) {
