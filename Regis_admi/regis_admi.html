@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registrar Administradores</title>
+  <link rel="icon" href="Imagenes/logo-transparent.png" type="image/png" />
+  <link rel="stylesheet" href="estilos_registro.css" />
+</head>
+<body>
+
+  <!-- Botón de volver -->
+  <a href="../index.html" class="btn-volver">&#8592;</a>
+
+  <!-- Logo superior -->
+  <header class="logo-top slide-in-left">
+    <img src="Imagenes/logo-transparent.png" alt="Logo StreetSync" />
+  </header>
+
+  <!-- Contenedor del formulario -->
+  <main class="form-container slide-in-left">
+    <h4>Registrar</h4>
+    <h2>Administradores</h2>
+    <p>Complete el formulario para registrar un nuevo administrador.</p>
+
+    <form>
+        <!-- Fila 1 -->
+        <div class="form-row">
+          <div class="input-group">
+            <label>Nombre completo</label>
+            <input type="text" required />
+          </div>
+          <div class="input-group">
+            <label>Correo electrónico</label>
+            <input type="email" required />
+          </div>
+        </div>
+      
+        <!-- Fila 2 -->
+        <div class="form-row">
+          <div class="input-group">
+            <label>Contraseña</label>
+            <input type="password" required />
+          </div>
+          <div class="input-group">
+            <label>Confirmar Contraseña</label>
+            <input type="password" required />
+          </div>
+        </div>
+      
+        <!-- Fila 3 -->
+        <div class="form-row">
+          <div class="input-group full-width">
+            <label>Número Telefónico</label>
+            <input type="tel" required />
+          </div>
+        </div>
+      
+        <!-- Fila 4 -->
+        <fieldset>
+          <legend>Descripción del rol</legend>
+          <div class="roles">
+            <label><input type="radio" name="rol" required /> Gerente</label>
+            <label><input type="radio" name="rol" /> Supervisor</label>
+            <label><input type="radio" name="rol" /> Contador</label>
+            <label><input type="radio" name="rol" /> Administrador General</label>
+            <label><input type="radio" name="rol" /> Otros roles</label>
+            <label><input type="radio" name="rol" /> Código</label>
+          </div>
+        </fieldset>
+      
+        <!-- Fila 5 -->
+        <div class="form-row">
+          <div class="input-group full-width">
+            <label>Código de verificación</label>
+            <input type="text" required />
+          </div>
+        </div>
+      
+        <!-- Fila 6 -->
+        <div class="form-row">
+          <div class="terms input-group full-width">
+            <label>
+              <input type="checkbox" required />
+              Acepto los términos
+            </label>
+          </div>
+        </div>
+      
+        <!-- Botón -->
+        <button type="submit">Enviar</button>
+    </form>
+      
+  </main>
+
+  <!-- Footer -->
+  <footer class="logo-top slide-in-left">
+    <img src="Imagenes/logo-transparent.png" alt="Logo StreetSync Footer" />
+  </footer>
+
+  <script src="animaciones_login.js"></script>
+</body>
+</html>

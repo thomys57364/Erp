@@ -1,0 +1,206 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  body {
+    background-color: #000;
+    color: #000;
+    min-height: 100vh;
+  }
+  
+    /* Botón volver */
+    .btn-volver {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    color: white;
+    text-decoration: none;
+    z-index: 1000;
+    transition: transform 0.2s ease;
+  }
+  .btn-volver:hover {
+    transform: scale(1.2);
+  }
+  
+  /* Logo */
+  .logo-top, footer {
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #000;
+  }
+  
+  .logo-top img, footer img {
+    width: 80px;
+  }
+  
+  /* Contenedor principal */
+  .form-container {
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 10rem;
+    width: 95%;
+    max-width: 1700px;
+    border-radius: 8px;
+    min-height: 730px;
+    text-align: center;
+  }
+  
+  .form-container h2 {
+    font-size: 2rem;
+    margin: 0.5rem 0;
+  }
+  
+  .form-container p {
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    color: #444;
+  }
+  
+  form {
+    text-align: center; 
+  }
+  
+  
+  /* Grilla */
+  .form-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  
+  
+  .full-width {
+    grid-column: span 2;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="tel"] {
+    width: 100%;
+    padding: 0.7rem 2rem;
+    border: 1px solid #888;
+    border-radius: 20px;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    outline: none;
+    text-align: center;
+  }
+  
+  
+  
+  fieldset {
+    margin-bottom: 1.5rem;
+    border: none;
+  }
+  
+  .roles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    justify-content: center; 
+    text-align: center;
+  }
+  
+  
+  .roles label {
+    font-size: 0.9rem;
+  }
+  
+ 
+  .terms input[type="checkbox"] {
+    margin-right: 0.5rem;
+    transform: scale(1.2);
+  }
+  button[type="submit"] {
+    background-color: #7e3ff2;
+    color: white;
+    padding: 0.7rem 2rem;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #9f5aff;
+  }
+  
+  /* Animación */
+  .slide-in-left {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: all 1s ease;
+  }
+  
+  .visible-slide {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .full-width {
+      grid-column: span 1;
+    }
+  
+    .roles {
+      flex-direction: column;
+    }
+  }
+  
+  .input-group label {
+    text-align: center;
+    margin-bottom: 0.3rem;
+    color: #333;
+    font-size: 0.95rem;
+  }
+  
+  /* Nueva clase para filas del formulario */
+.form-row {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  /* Cada campo individual */
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+  }
+  
+  /* Forzar ancho completo en algunos campos */
+  .input-group.full-width {
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  /* Espacio para términos */
+  .terms {
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .terms label {
+    font-size: 0.95rem;
+    color: #333;
+  }
+  
+  
