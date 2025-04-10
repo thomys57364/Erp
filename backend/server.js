@@ -35,10 +35,11 @@ app.post('/registrar-admin', async (req, res) => {
     console.error('Error al registrar:', error);
     res.status(500).json({ mensaje: 'Error del servidor.' });
   } finally {
-    await client.close();
+    await client.close(); // Cierra la conexión después de cada operación
   }
 });
 
+// Iniciar el servidor
 app.listen(port, () => {
   console.log(`Servidor escuchando en el puerto ${port}`);
 });

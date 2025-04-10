@@ -23,16 +23,16 @@
     <h2>Administradores</h2>
     <p>Complete el formulario para registrar un nuevo administrador.</p>
 
-    <form>
+    <form id="registroAdmin">
         <!-- Fila 1 -->
         <div class="form-row">
           <div class="input-group">
             <label>Nombre completo</label>
-            <input type="text" required />
+            <input type="text" name="nombreCompleto" required />
           </div>
           <div class="input-group">
             <label>Correo electrónico</label>
-            <input type="email" required />
+            <input type="email" name="correo" required />
           </div>
         </div>
       
@@ -40,11 +40,11 @@
         <div class="form-row">
           <div class="input-group">
             <label>Contraseña</label>
-            <input type="password" required />
+            <input type="password" name="contrasena" required />
           </div>
           <div class="input-group">
             <label>Confirmar Contraseña</label>
-            <input type="password" required />
+            <input type="password" name="confirmarContrasena" required />
           </div>
         </div>
       
@@ -52,7 +52,7 @@
         <div class="form-row">
           <div class="input-group full-width">
             <label>Número Telefónico</label>
-            <input type="tel" required />
+            <input type="tel" name="telefono" required />
           </div>
         </div>
       
@@ -60,12 +60,12 @@
         <fieldset>
           <legend>Descripción del rol</legend>
           <div class="roles">
-            <label><input type="radio" name="rol" required /> Gerente</label>
-            <label><input type="radio" name="rol" /> Supervisor</label>
-            <label><input type="radio" name="rol" /> Contador</label>
-            <label><input type="radio" name="rol" /> Administrador General</label>
-            <label><input type="radio" name="rol" /> Otros roles</label>
-            <label><input type="radio" name="rol" /> Código</label>
+            <label><input type="radio" name="rol" value="Gerente" required /> Gerente</label>
+            <label><input type="radio" name="rol" value="Supervisor" /> Supervisor</label>
+            <label><input type="radio" name="rol" value="Contador" /> Contador</label>
+            <label><input type="radio" name="rol" value="Administrador General" /> Administrador General</label>
+            <label><input type="radio" name="rol" value="Otros roles" /> Otros roles</label>
+            <label><input type="radio" name="rol" value="Código" /> Código</label>
           </div>
         </fieldset>
       
@@ -73,7 +73,7 @@
         <div class="form-row">
           <div class="input-group full-width">
             <label>Código de verificación</label>
-            <input type="text" required />
+            <input type="text" name="codigoVerificacion" required />
           </div>
         </div>
       
@@ -98,6 +98,45 @@
     <img src="Imagenes/logo-transparent.png" alt="Logo StreetSync Footer" />
   </footer>
 
-  <script src="animaciones_login.js"></script>
+  <script>
+    document.getElementById("registroAdmin").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const datos = {
+        nombreCompleto: form.nombreCompleto.value,
+        correo: form.correo.value,
+        contrasena: form.contrasena.value,
+        telefono: form.telefono.value,
+        rol: form.rol.value,
+        codigoVerificacion: form.codigoVerificacion.value
+      };
+
+      if (form.contrasena.value !== form.confirmarContrasena.value) {
+        alert("Las contraseñas no coinciden.");
+        return;
+      }
+
+      try {
+        const respuesta = await fetch("https://erp-production-7865.up.railway.app/registrar-admin", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(datos)
+        });
+
+        const resultado = await respuesta.json();
+
+        if (respuesta.ok) {
+          alert(resultado.mensaje);
+          window.location.href = "../inicio_admi/inicio_admi.html";
+        } else {
+          alert("Error: " + resultado.mensaje);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Ocurrió un error al enviar los datos.");
+      }
+    });
+  </script>
 </body>
 </html>
