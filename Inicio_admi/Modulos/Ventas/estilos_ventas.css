@@ -1,0 +1,305 @@
+/* Reset de márgenes y padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Cuerpo */
+body {
+  background-color: #000;
+  color: #000;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.logo-top {
+  text-align: center;
+  padding: 1rem 0;
+  background-color: #000;
+}
+
+.logo-top img {
+  width: 80px;
+  opacity: 0.9;
+}
+
+.logo-top h1 {
+  color: white;
+  font-size: 2rem;
+  font-weight: 500;
+  margin-top: 0.3rem;
+}
+
+/* Main */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Alineamos el contenido arriba */
+  min-height: calc(100vh - 200px);
+  padding: 2rem;
+}
+
+/* Grilla */
+.modulos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Aumentar el tamaño mínimo de las columnas */
+  gap: 3rem; /* Aumentar el espacio entre las tarjetas */
+  max-width: 1500px; /* Aumentar el ancho máximo de la grilla */
+  width: 100%;
+  justify-content: center;
+  margin: 0 auto; /* Centrar la grilla */
+}
+
+/* Tarjeta */
+.modulo-card {
+  background-color: #fff;
+  border-radius: 24px;
+  overflow: hidden;
+  height: 700px; /* Aumentar la altura de las tarjetas */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modulo-texto {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+/* Estilo para el formulario de búsqueda */
+.search-form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px; /* Añadimos un pequeño margen entre el buscador y la tabla */
+}
+
+.search-input {
+  padding: 10px;
+  width: 300px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-right: 10px;
+}
+
+.botones-form {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Espacio entre los botones */
+}
+
+/* Estilo para el botón "Actualizar" (de búsqueda) */
+.btn-buscar {
+  padding: 10px 20px;
+  background-color: #7e3ff2;
+  color: white;
+  border: none; /* Eliminar bordes */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(126, 63, 242, 0.3); /* Sombra sutil */
+}
+
+.btn-buscar:hover {
+  background-color: #5e1fb8;
+  box-shadow: 0 6px 15px rgba(94, 31, 184, 0.4); /* Aumentar sombra en hover */
+}
+
+/* Estilo para el botón "Agregar Cliente" */
+.btn-agregar {
+  display: inline-block;
+  background-color: #008CBA;
+  color: white;
+  padding: 12px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  text-align: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  border: none; /* Eliminar bordes */
+  box-shadow: 0 4px 10px rgba(0, 140, 202, 0.3); /* Agregar sombra sutil */
+}
+
+.btn-agregar:hover {
+  background-color: #007bb5;
+  box-shadow: 0 6px 15px rgba(0, 123, 190, 0.4); /* Aumentar la sombra al hacer hover */
+}
+
+/* Estilo de la tabla */
+.tabla-ventas {
+  width: 100%;
+  border-collapse: collapse; /* Asegura que las celdas estén bien alineadas */
+  margin: 20px 0;
+  border: 1px solid #ddd; /* Línea de separación visible entre las celdas */
+}
+
+.tabla-ventas th, .tabla-ventas td {
+  padding: 15px;
+  text-align: left;
+  border: 1px solid #ddd; /* Borde alrededor de cada celda */
+}
+
+.tabla-ventas th {
+  background-color: #7e3ff2;
+  color: white;
+  font-weight: 600;
+}
+
+.tabla-ventas tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.tabla-ventas tr:hover {
+  background-color: #eaeaea;
+}
+
+/* Mejorar la apariencia de las celdas */
+.tabla-ventas td {
+  background-color: #fff;
+  text-align: left;
+}
+
+/* Asegura que las celdas tengan el mismo tamaño para la tabla organizada */
+.tabla-ventas td, .tabla-ventas th {
+  width: 20%; /* Asegura que las columnas estén distribuidas de manera uniforme */
+  word-wrap: break-word;
+}
+
+/* Estilo para los botones de acción */
+.tabla-ventas td:last-child {
+  text-align: right; /* Alineación a la derecha para los botones */
+  padding-right: 20px; /* Añadir un poco de espacio a la derecha */
+}
+
+/* Estilo para los botones de acción en la tabla (Editar) */
+.tabla-ventas .btn-editar, .tabla-ventas .btn-eliminar {
+  padding: 5px 12px;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: white;
+  background-color: #7e3ff2;
+  text-decoration: none;
+  margin: 5px 5px; /* Espacio entre los botones */
+  display: inline-block; /* Asegura que los botones estén en línea */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  border: none; /* Eliminar bordes */
+  box-shadow: 0 4px 10px rgba(126, 63, 242, 0.3); /* Sombra suave */
+}
+
+.tabla-ventas .btn-editar:hover {
+  background-color: #5e1fb8;
+  box-shadow: 0 6px 15px rgba(94, 31, 184, 0.4); /* Aumentar sombra en hover */
+}
+
+.tabla-ventas .btn-eliminar {
+  background-color: #f44336;
+}
+
+.tabla-ventas .btn-eliminar:hover {
+  background-color: #d32f2f;
+  box-shadow: 0 6px 15px rgba(211, 47, 47, 0.4); /* Aumentar sombra en hover */
+}
+
+/* Contenedor para la tabla con scroll */
+.tabla-container {
+  max-height: 600px; /* Altura máxima de la tabla */
+  overflow-y: auto; /* Habilita el scroll vertical */
+  margin-top: 20px; /* Espacio superior */
+}
+
+/* Footer */
+footer {
+  background-color: #000;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: auto;
+}
+
+footer img {
+  width: 40px;
+  opacity: 0.8;
+}
+
+/* Botón volver */
+.btn-volver {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 1.8rem;
+  color: white;
+  text-decoration: none;
+  z-index: 1000;
+  transition: transform 0.2s ease;
+}
+
+.btn-volver:hover {
+  transform: scale(1.2);
+}
+
+/* Estilo para los modales */
+.modal {
+  display: none; /* Ocultar los modales inicialmente */
+  position: fixed;
+  z-index: 1; /* Asegúrate de que el modal esté por encima de todo */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  margin: 15% auto;
+  width: 50%;
+  border-radius: 8px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-content h3 {
+  margin-bottom: 0px;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.modal-content button {
+  background-color: #7e3ff2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.modal-content button:hover {
+  background-color: #5e1fb8;
+}

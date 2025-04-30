@@ -72,13 +72,16 @@ main {
   background-color: #fff;
   border-radius: 24px;
   overflow: hidden;
-  height: 500px; /* Ajusta según tu preferencia */
+  height: 500px;
+  width: 400px; /* Añadido un ancho fijo para mejor centrado */
+  margin: 0 auto; /* Esta línea centra horizontalmente */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 
 .modulo-card:hover {
   transform: scale(1.02);

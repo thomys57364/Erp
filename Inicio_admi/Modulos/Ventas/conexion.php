@@ -1,7 +1,7 @@
 <?php
-$servername = "database-erp.cv064qs40dkr.us-east-2.rds.amazonaws.com"; // Cambia según tu configuración
-$username = "admin"; // Cambia por tu nombre de usuario
-$password = "tlcc3012185521"; // Cambia por tu contraseña
+$servername = "localhost"; // Cambia según tu configuración
+$username = "root"; // Cambia por tu nombre de usuario
+$password = "1615"; // Cambia por tu contraseña
 $dbname = "admin_clientes"; // Nombre de tu base de datos
 
 // Crear conexión
