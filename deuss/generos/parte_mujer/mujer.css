@@ -1,0 +1,222 @@
+* {
+    background: white;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.superiror-section {
+    position: relative;
+}
+
+.barra-superior {
+    position: relative;
+}
+
+.seleccion {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10rem;
+    padding: 1rem 2rem;
+    flex-wrap: wrap;
+}
+
+.titulo {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+}
+
+.seleccionar-genero {
+    display: flex;
+    gap: 3rem;
+    font-weight: 700;
+    cursor: pointer;
+    flex-wrap: wrap;
+}
+
+/* Mejorar mujer y hombre */
+.seleccionar-genero h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: black;
+}
+
+.seleccion1, .seleccion2 {
+    position: relative;
+    overflow: visible;
+    padding-bottom: 6px;
+}
+
+.seleccion1::after, .seleccion2::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: black;
+    left: 50%;
+    bottom: -2px;
+    transform: translateX(-50%);
+    transition: width 0.4s ease;
+}
+
+.seleccion1:hover::after, .seleccion2:hover::after {
+    width: 100%;
+}
+
+/* CONTENEDOR DE BOTONES */
+.btns-superior {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+}
+
+/* ESTILO DE BOTONES */
+.btn-white {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    border-radius: 50px;
+    padding: 0.5rem 1.2rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+
+.elecciones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 0;
+}
+
+.elecciones img {
+    width: 21%;
+    min-width: 350px;
+    height: auto;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+}
+
+.elecciones img:hover {
+    transform: scale(1.05);
+}
+
+.feed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8rem;
+    padding: 0;
+}
+
+.feed img {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Responsive ajustes */
+@media screen and (max-width: 1700px) {
+    .elecciones img {
+        width: 45%;
+        min-width: 300px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .seleccion {
+        gap: 4rem;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .seleccionar-genero {
+        gap: 2rem;
+        justify-content: center;
+    }
+    .btns-superior {
+        position: static;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .btns-superior {
+        position: static;
+        margin-top: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .seleccion {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+        text-align: center;
+    }
+
+    .seleccionar-genero {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
+        text-align: center;
+    }
+
+    .elecciones img {
+        width: 80%;
+        min-width: unset;
+    }
+
+    .feed img {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .elecciones img {
+        width: 100%;
+    }
+
+    .feed img {
+        width: 100%;
+    }
+}
+
+/* Animación de fade-in */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
