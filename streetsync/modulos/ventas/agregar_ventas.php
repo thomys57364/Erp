@@ -32,11 +32,11 @@ if (
     } else {
         $mensaje = "Error al agregar venta: " . $conn->error;
     }
-} else {
-    $mensaje = "Faltan datos obligatorios";
+
+    // Cerrar la conexión
+    $conn->close();
 }
 
-$conn->close();
-
-echo json_encode(['mensaje' => $mensaje]);
-exit();
+echo json_encode(['mensaje' => $mensaje]); // Devolver el mensaje en formato JSON para mostrar en el modal
+exit; // <--- AGREGAR ESTO
+?>

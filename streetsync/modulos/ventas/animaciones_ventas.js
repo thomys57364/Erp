@@ -106,10 +106,17 @@ document.addEventListener('DOMContentLoaded', function () {
       })
       .then(resp => resp.json())
       .then(data => {
-        alert(data.mensaje || 'Venta agregada.');
-        modalAgregar.style.display = 'none';
-        setTimeout(() => location.reload(), 1000);
-      })
+  // Mostrar mensaje en modalMensaje
+  document.getElementById("mensajeTexto").textContent = data.mensaje || 'Venta agregada.';
+  modalMensaje.style.display = 'block';
+  modalAgregar.style.display = 'none';
+  // Cerrar modalMensaje y recargar página después de 1.5 segundos
+  setTimeout(() => {
+    modalMensaje.style.display = 'none';
+    location.reload();
+  }, 1500);
+})
+
       .catch(() => alert('Error al agregar la venta.'));
     };
   }

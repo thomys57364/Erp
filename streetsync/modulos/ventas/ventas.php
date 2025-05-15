@@ -104,6 +104,7 @@ if (isset($_POST['buscar'])) {
       <span class="close modal-cerrar">&times;</span>
       <h3>Agregar Cliente</h3>
       <form action="agregar_ventas.php" method="POST" id="formAgregarVenta">
+        <input type="date" name="fecha" required />
   <input type="text" name="cliente_nombre" placeholder="Nombre del Cliente" required />
   <input type="text" name="producto_nombre" placeholder="Producto Vendido" required />
   <input type="number" name="cantidad" placeholder="Cantidad" required />
