@@ -21,7 +21,7 @@ if (isset($_POST['buscar'])) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Modulo Clientes/Proveedores</title>
-  <link rel="stylesheet" href="estilos_cliente.css?v=4" />
+  <link rel="stylesheet" href="estilos_cliente.css?v=5" />
   <link rel="icon" href="../../../imagenes/logo-transparent.png" type="image/png" />
 </head>
 <body>
@@ -121,12 +121,21 @@ if (isset($_POST['buscar'])) {
 
   <!-- Modal de editar cliente -->
   <div id="modalEditar" class="modal">
-    <div class="modal-content">
-      <span class="close" id="cerrarModalEditar">&times;</span>
-      <h3>Editar Cliente</h3>
-      <!-- Aquí iría el formulario de edición -->
-    </div>
+  <div class="modal-content">
+    <span class="close" id="cerrarModalEditar">&times;</span>
+    <h3>Editar Cliente</h3>
+    <form id="formEditarCliente" method="POST" action="editar_cliente.php">
+      <input type="hidden" name="cliente_id" id="editClienteId" />
+      <input type="text" name="nombre" id="editNombre" placeholder="Nombre" required />
+      <input type="text" name="apellido" id="editApellido" placeholder="Apellido" required />
+      <input type="email" name="email" id="editEmail" placeholder="Email" required />
+      <input type="text" name="telefono" id="editTelefono" placeholder="Teléfono" required />
+      <input type="text" name="direccion" id="editDireccion" placeholder="Dirección" required />
+      <button type="submit" class="btn-agregar">Guardar Cambios</button>
+    </form>
   </div>
+</div>
+
 
  <!-- Modal Confirmación Eliminar -->
 <div id="modalConfirmarEliminar" class="modal">
@@ -142,6 +151,6 @@ if (isset($_POST['buscar'])) {
   </div>
 </div>
 
-  <script src="animaciones_cliente.js?v=4"></script>
+  <script src="animaciones_cliente.js?v=5"></script>
 </body>
 </html>

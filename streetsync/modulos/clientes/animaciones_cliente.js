@@ -27,10 +27,27 @@ btnAgregar.onclick = function() {
 // Abrir el modal de editar (para cada cliente)
 for (let i = 0; i < btnEditar.length; i++) {
   btnEditar[i].onclick = function() {
-    modalEditar.style.display = "block";
-    // Aquí podrías cargar los datos del cliente en el formulario de editar
+    const clienteId = this.getAttribute('data-id');
+    fetch('editar_cliente.php?id=' + clienteId)
+      .then(response => response.json())
+      .then(data => {
+        // Rellenar inputs del modal
+        document.getElementById('editClienteId').value = data.cliente_id;
+        document.getElementById('editNombre').value = data.nombre;
+        document.getElementById('editApellido').value = data.apellido;
+        document.getElementById('editEmail').value = data.email;
+        document.getElementById('editTelefono').value = data.telefono;
+        document.getElementById('editDireccion').value = data.direccion;
+
+        // Mostrar modal
+        modalEditar.style.display = "block";
+      })
+      .catch(error => {
+        alert('Error al cargar datos del cliente: ' + error);
+      });
   }
 }
+
 
 // Cerrar el modal de agregar
 cerrarModalAgregar.onclick = function() {
