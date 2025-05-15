@@ -33,3 +33,4 @@ if (isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['email'
 echo json_encode(['mensaje' => $mensaje]); // Devolver el mensaje en formato JSON para mostrar en el modal
 exit; // <--- AGREGAR ESTO
 ?>
+
