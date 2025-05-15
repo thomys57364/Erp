@@ -21,7 +21,7 @@ if (isset($_POST['buscar'])) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Módulo de Ventas</title>
-  <link rel="stylesheet" href="estilos_ventas.css?v=5" />
+  <link rel="stylesheet" href="estilos_ventas.css?v=6" />
   <link rel="icon" href="../../../imagenes/logo-transparent.png" type="image/png" />
 </head>
 <body>
@@ -158,6 +158,6 @@ if (isset($_POST['buscar'])) {
   </div>
 </div>
 
-  <script src="animaciones_ventas.js?v=5"></script>
+  <script src="animaciones_ventas.js?v=6"></script>
 </body>
 </html>
