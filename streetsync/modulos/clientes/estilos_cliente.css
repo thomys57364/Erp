@@ -53,11 +53,12 @@ body {
 /* Main */
 main {
   display: flex;
-  justify-content: center;
-  align-items: flex-start; /* Alineamos el contenido arriba */
+  justify-content: center; /* Restaurado a center */
+  align-items: flex-start;
   min-height: calc(100vh - 200px);
-  padding: 2rem 1rem;
+  padding: 2rem 1rem; /* Padding horizontal restaurado */
   box-sizing: border-box;
+  width: 100%;
 }
 
 /* Contenedor principal (tarjeta) */
@@ -68,7 +69,8 @@ main {
   max-width: 1200px;
   width: 100%;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 0.5s ease-in-out;
+  margin: 0 auto;
+  overflow-x: visible;
 }
 
 /* Formulario de búsqueda */
@@ -132,11 +134,8 @@ main {
 /* Tabla de clientes */
 .tabla-clientes {
   width: 100%;
+  min-width: 1100px; /* Ajusta este valor según tus necesidades */
   border-collapse: collapse;
-  border-radius: 10px;
-  overflow: hidden;
-  font-size: 0.95rem;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
 }
 
 .tabla-clientes th, 
@@ -191,9 +190,11 @@ main {
 /* Contenedor para la tabla con scroll */
 .tabla-container {
   max-height: 600px;
+  overflow-x: auto;
   overflow-y: auto;
-  margin-top: 20px;
-  border-radius: 10px;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  margin: 20px 0;
 }
 
 /* Footer */
@@ -305,116 +306,44 @@ footer img {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .modulo-card {
-    padding: 1rem;
-    height: auto;
+  main {
+    padding: 1rem 0;
+    justify-content: flex-start;
+    overflow-x: auto;
   }
-
+  .modulo-card {
+    padding: 1rem 0.5rem;
+    min-width: 100%; /* Solo en móviles */
+  }
+  
+  .tabla-container {
+    margin: 10px 0;
+  }
+  
+  .tabla-clientes {
+     margin: 10px 0;
+  }
+  
+  /* Mantén el resto de tus estilos existentes para móviles */
   .search-form {
     flex-direction: column;
     gap: 1rem;
   }
-
+  
   .search-input,
   .botones-form button,
   .botones-form .btn-agregar {
     width: 100%;
   }
-
-  .tabla-clientes th, 
-  .tabla-clientes td {
-    padding: 12px 10px;
-  }
-
-  .modal-content {
-    padding: 1rem;
-    width: 95%;
-  }
-}
-
-/* Para móviles muy pequeños (teléfonos) */
-@media (max-width: 480px) {
-  .modulo-card {
-    padding: 1rem;
-    height: auto;
-  }
-
-  .search-form {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .search-input,
-  .botones-form button,
-  .botones-form .btn-agregar {
-    width: 100%;
-  }
-
+  
   .tabla-clientes th, 
   .tabla-clientes td {
     padding: 10px 8px;
     font-size: 0.85rem;
   }
-
+  
   .modal-content {
     padding: 1rem;
-    width: 98%;
-  }
-}
-
-/* Para tablets y móviles grandes */
-@media (min-width: 481px) and (max-width: 768px) {
-  .modulo-card {
-    padding: 1rem 1.5rem;
-    height: auto;
-  }
-
-  .search-form {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .search-input,
-  .botones-form button,
-  .botones-form .btn-agregar {
-    width: 100%;
-  }
-
-  .tabla-clientes th, 
-  .tabla-clientes td {
-    padding: 12px 10px;
-    font-size: 0.9rem;
-  }
-
-  .modal-content {
-    padding: 1rem 1.5rem;
     width: 95%;
-  }
-}
-
-/* Para pantallas medianas (laptops pequeñas y medianas) */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .modulo-card {
-    padding: 1.5rem 2rem;
-  }
-
-  .tabla-clientes th, 
-  .tabla-clientes td {
-    padding: 14px 12px;
-    font-size: 0.95rem;
-  }
-}
-
-/* Para pantallas grandes (laptops grandes y desktops) */
-@media (min-width: 1025px) {
-  .modulo-card {
-    padding: 2rem;
-    max-width: 1200px;
-  }
-
-  .tabla-clientes th, 
-  .tabla-clientes td {
-    padding: 15px 16px;
-    font-size: 1rem;
   }
 }
