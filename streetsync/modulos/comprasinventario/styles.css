@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #000;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+  }
+  
+  .container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 1200px;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 25px;
+  }
+  
+  .top-bar form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .top-bar input {
+    padding: 10px;
+    font-size: 14px;
+    width: 180px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  
+  .btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .btn.update {
+    background-color: #9b59b6;
+  }
+  
+  .btn.add {
+    background-color: #3498db;
+  }
+  
+  .table-wrapper {
+    overflow-x: auto;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+  }
+  
+  thead {
+    background-color: #7e57c2;
+    color: white;
+  }
+  
+  th, td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  tr:hover {
+    background-color: #f9f9f9;
+  }
+  
