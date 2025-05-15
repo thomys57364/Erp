@@ -21,7 +21,7 @@ if (isset($_POST['buscar'])) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Módulo de Ventas</title>
-  <link rel="stylesheet" href="estilos_ventas.css?v=6" />
+  <link rel="stylesheet" href="estilos_ventas.css?v=7" />
   <link rel="icon" href="../../../imagenes/logo-transparent.png" type="image/png" />
 </head>
 <body>
@@ -104,7 +104,7 @@ if (isset($_POST['buscar'])) {
       <span class="close modal-cerrar">&times;</span>
       <h3>Agregar Cliente</h3>
       <form action="agregar_ventas.php" method="POST" id="formAgregarVenta">
-        <input type="date" name="fecha" required />
+        <input type="datetime-local" name="fecha" required />
   <input type="text" name="cliente_nombre" placeholder="Nombre del Cliente" required />
   <input type="text" name="producto_nombre" placeholder="Producto Vendido" required />
   <input type="number" name="cantidad" placeholder="Cantidad" required />
@@ -158,6 +158,6 @@ if (isset($_POST['buscar'])) {
   </div>
 </div>
 
-  <script src="animaciones_ventas.js?v=6"></script>
+  <script src="animaciones_ventas.js?v=7"></script>
 </body>
 </html>
