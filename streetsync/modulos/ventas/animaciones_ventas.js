@@ -1,62 +1,124 @@
-// Obtener los modales y botones
-var modalAgregar = document.getElementById("modalAgregar");
-var modalMensaje = document.getElementById("modalMensaje");
+document.addEventListener('DOMContentLoaded', function () {
+  // Modales y botones
+  const modalAgregar = document.getElementById("modalAgregar");
+  const modalEditar = document.getElementById("modalEditar");
+  const modalConfirmarEliminar = document.getElementById('modalConfirmarEliminar');
 
-var btnAgregar = document.getElementById("abrirModalAgregar");
+  const btnAbrirAgregar = document.getElementById("abrirModalAgregar");
+  const btnCerrarAgregar = modalAgregar.querySelector('.modal-cerrar');
+  const btnCerrarEditar = document.getElementById("cerrarModalEditar");
 
-var cerrarModalAgregar = document.getElementsByClassName("modal-cerrar")[0];
-var cerrarModalMensaje = document.getElementById("cerrarModalMensaje");
+  const btnCancelarEliminar = document.getElementById('btnCancelarEliminar');
+  const btnConfirmarEliminar = document.getElementById('btnConfirmarEliminar');
+  const btnCerrarConfirmarEliminar = document.getElementById('cerrarModalConfirmarEliminar');
 
-// Obtener el formulario de agregar venta (no cliente)
-var formAgregarVenta = document.getElementById("formAgregarVenta");
+  const formAgregarVenta = document.getElementById("formAgregarVenta");
+  const formEditarVenta = document.getElementById("formEditarVenta"); // Asumiendo que lo crees
 
-// Abrir el modal de agregar venta
-btnAgregar.onclick = function() {
-  modalAgregar.style.display = "block";
-}
+  const btnEditar = document.getElementsByClassName("btn-editar");
+  const btnEliminar = document.getElementsByClassName("btn-eliminar");
 
-// Cerrar el modal de agregar
-cerrarModalAgregar.onclick = function() {
-  modalAgregar.style.display = "none";
-}
+  let idAEliminar = null;
 
-// Cerrar el modal de mensaje
-cerrarModalMensaje.onclick = function() {
-  modalMensaje.style.display = "none";
-}
-
-// Cerrar modal si se hace clic fuera
-window.onclick = function(event) {
-  if (event.target == modalAgregar) {
+  // Abrir modal agregar
+  btnAbrirAgregar.onclick = () => {
+    modalAgregar.style.display = "block";
+  };
+  // Cerrar modal agregar
+  btnCerrarAgregar.onclick = () => {
     modalAgregar.style.display = "none";
-  } else if (event.target == modalMensaje) {
-    modalMensaje.style.display = "none";
+  };
+
+  // Abrir modal editar con carga AJAX
+  Array.from(btnEditar).forEach(btn => {
+  btn.addEventListener('click', () => {
+    const id = btn.getAttribute('data-id');
+    fetch(`editar_ventas.php?id=${id}`)
+      .then(resp => resp.json())
+      .then(data => {
+        if (formEditarVenta) {
+          formEditarVenta.querySelector('[name="reporte_id"]').value = data.reporte_id;
+          
+          formEditarVenta.querySelector('[name="fecha"]').value = data.fecha;
+          formEditarVenta.querySelector('[name="cliente_nombre"]').value = data.cliente_nombre;
+          formEditarVenta.querySelector('[name="producto_nombre"]').value = data.producto_nombre;
+          formEditarVenta.querySelector('[name="cantidad"]').value = data.cantidad;
+          formEditarVenta.querySelector('[name="precio_unitario"]').value = data.precio_unitario;
+          modalEditar.style.display = "block";
+        } else {
+          alert('Formulario de edición no encontrado.');
+        }
+      })
+      .catch(() => alert('Error al cargar los datos de la venta.'));
+  });
+});
+
+  // Cerrar modal editar
+  if (btnCerrarEditar) {
+    btnCerrarEditar.onclick = () => {
+      modalEditar.style.display = "none";
+    };
   }
-}
 
-// Enviar datos de agregar venta mediante AJAX sin recargar la página
-formAgregarVenta.onsubmit = function(event) {
-  event.preventDefault(); // Evitar recarga de página
+  // Confirmar eliminar
+  Array.from(btnEliminar).forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      idAEliminar = btn.getAttribute('data-id');
+      modalConfirmarEliminar.style.display = 'block';
+    });
+  });
 
-  var formData = new FormData(this); // Capturar datos
-
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "agregar_ventas.php", true); // Ahora va a agregar_ventas.php
-  xhr.onload = function() {
-    if (xhr.status == 200) {
-      var respuesta = JSON.parse(xhr.responseText); // Recibir respuesta JSON
-      document.getElementById("mensajeTexto").innerHTML = respuesta.mensaje; // Poner el mensaje en el modal
-      modalMensaje.style.display = "block"; // Mostrar modal de mensaje
-
-      modalAgregar.style.display = "none"; // Cerrar modal de agregar venta
-
-      // Opcional: recargar la página después de unos segundos
-      setTimeout(function() {
-        location.reload();
-      }, 1500); // 1.5 segundos
-    } else {
-      alert("Hubo un error al agregar la venta.");
+  btnCancelarEliminar.onclick = () => {
+    modalConfirmarEliminar.style.display = 'none';
+    idAEliminar = null;
+  };
+  if (btnCerrarConfirmarEliminar) {
+    btnCerrarConfirmarEliminar.onclick = () => {
+      modalConfirmarEliminar.style.display = 'none';
+      idAEliminar = null;
+    };
+  }
+  btnConfirmarEliminar.onclick = () => {
+    if (idAEliminar) {
+      window.location.href = `eliminar_ventas.php?id=${idAEliminar}`;
     }
   };
-  xhr.send(formData);
-};
+
+  // Cerrar modales al hacer clic fuera
+  window.onclick = e => {
+    if (e.target === modalAgregar) modalAgregar.style.display = 'none';
+    else if (e.target === modalEditar) modalEditar.style.display = 'none';
+    else if (e.target === modalConfirmarEliminar) {
+      modalConfirmarEliminar.style.display = 'none';
+      idAEliminar = null;
+    }
+  };
+
+  // Enviar formulario agregar venta via AJAX
+  if (formAgregarVenta) {
+    formAgregarVenta.onsubmit = e => {
+      e.preventDefault();
+      const formData = new FormData(formAgregarVenta);
+      fetch('agregar_ventas.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(resp => resp.json())
+      .then(data => {
+        alert(data.mensaje || 'Venta agregada.');
+        modalAgregar.style.display = 'none';
+        setTimeout(() => location.reload(), 1000);
+      })
+      .catch(() => alert('Error al agregar la venta.'));
+    };
+  }
+
+  // Enviar formulario editar venta via POST (con redirección normal)
+  if (formEditarVenta) {
+    formEditarVenta.onsubmit = e => {
+      // Por simplicidad, se puede dejar que el formulario envíe normalmente
+      // Si quieres AJAX, se puede adaptar luego
+    };
+  }
+});

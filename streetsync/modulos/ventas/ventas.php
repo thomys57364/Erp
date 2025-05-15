@@ -2,14 +2,14 @@
 // Incluir el archivo de conexión a la base de datos
 include '../../../conexion/conexion.php';
 
-// Consulta base para traer todos los reportes de ventas
+// Realizar la consulta SQL para obtener los datos de los clientes
 $sql = "SELECT * FROM reporte_ventas";
 $result = $conn->query($sql);
 
 // Verificar si se ha realizado una búsqueda
 if (isset($_POST['buscar'])) {
     $busqueda = $_POST['buscar'];
-    // Modificar la consulta para filtrar por cliente_nombre o producto_nombre
+    // Modificar la consulta para filtrar por nombre, email, teléfono, etc.
     $sql = "SELECT * FROM reporte_ventas WHERE cliente_nombre LIKE '%$busqueda%' OR producto_nombre LIKE '%$busqueda%'";
     $result = $conn->query($sql);
 }
@@ -21,7 +21,7 @@ if (isset($_POST['buscar'])) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Módulo de Ventas</title>
-  <link rel="stylesheet" href="estilos_ventas.css" />
+  <link rel="stylesheet" href="estilos_ventas.css?v=5" />
   <link rel="icon" href="../../../imagenes/logo-transparent.png" type="image/png" />
 </head>
 <body>
@@ -50,7 +50,7 @@ if (isset($_POST['buscar'])) {
             </div>
           </form>
 
-          <!-- Tabla de reportes de ventas -->
+          <!-- Tabla de clientes -->
           <div class="ventas-list">
             <?php
             if ($result->num_rows > 0) {
@@ -74,8 +74,10 @@ if (isset($_POST['buscar'])) {
                             <td>$" . number_format($row["precio_unitario"], 2) . "</td>
                             <td>$" . number_format($row["total"], 2) . "</td>
                             <td>
-                                <a href='eliminar_ventas.php?id=" . $row["reporte_id"] . "' class='btn-eliminar'>Eliminar</a>
-                            </td>
+                              <button class='btn-editar' data-id='" . $row["reporte_id"] . "'>Editar</button>
+<button class='btn-eliminar' data-id='" . $row["reporte_id"] . "'>Eliminar</button>
+
+                          </td>
                           </tr>";
                 }
                 echo "</table>
@@ -83,7 +85,6 @@ if (isset($_POST['buscar'])) {
             } else {
                 echo "No se encontraron reportes de ventas.";
             }
-
             $conn->close();
             ?>
           </div>
@@ -97,30 +98,65 @@ if (isset($_POST['buscar'])) {
     <img src="../../../imagenes/logo-transparent.png" alt="Logo StreetSync Footer" />
   </footer>
 
-<!-- Modal para agregar venta -->
-<div id="modalAgregar" class="modal">
-  <div class="modal-content">
-    <span class="close modal-cerrar">&times;</span> <!-- Cerrar modal -->
-    <h3>Agregar Venta</h3>
-    <form action="agregar_ventas.php" method="POST" id="formAgregarVenta">
+  <!-- Modal de agregar cliente -->
+  <div id="modalAgregar" class="modal">
+    <div class="modal-content">
+      <span class="close modal-cerrar">&times;</span>
+      <h3>Agregar Cliente</h3>
+      <form action="agregar_ventas.php" method="POST" id="formAgregarVenta">
   <input type="text" name="cliente_nombre" placeholder="Nombre del Cliente" required />
   <input type="text" name="producto_nombre" placeholder="Producto Vendido" required />
   <input type="number" name="cantidad" placeholder="Cantidad" required />
   <input type="number" step="0.01" name="precio_unitario" placeholder="Precio Unitario" required />
   <button type="submit" class="btn-agregar">Agregar Venta</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal para mostrar mensaje -->
+  <div id="modalMensaje" class="modal">
+    <div class="modal-content">
+      <span class="close" id="cerrarModalMensaje">&times;</span>
+      <h3 id="mensajeTexto"></h3>
+    </div>
+  </div>
+
+  <!-- Modal de editar cliente -->
+  <div id="modalEditar" class="modal">
+  <div class="modal-content">
+    <span class="close" id="cerrarModalEditar">&times;</span>
+    <h3>Editar venta</h3>
+    <form id="formEditarVenta" method="POST" action="editar_ventas.php">
+  <input type="hidden" name="reporte_id" />
+  
+<input type="hidden" name="fecha" />
+
+  <input type="text" name="cliente_nombre" placeholder="Nombre del Cliente" required />
+  <input type="text" name="producto_nombre" placeholder="Producto Vendido" required />
+  <input type="number" name="cantidad" placeholder="Cantidad" required />
+  <input type="number" step="0.01" name="precio_unitario" placeholder="Precio Unitario" required />
+  <button type="submit" class="btn-agregar">Guardar Venta</button>
 </form>
 
+
   </div>
 </div>
 
-<!-- Modal para mostrar mensaje -->
-<div id="modalMensaje" class="modal">
+
+ <!-- Modal Confirmación Eliminar -->
+<div id="modalConfirmarEliminar" class="modal">
   <div class="modal-content">
-    <span class="close" id="cerrarModalMensaje" >&times;</span>
-    <h3 id="mensajeTexto"></h3>
+    <span class="close" id="cerrarModalConfirmarEliminar">&times;</span>
+    <h3>¿Estás seguro que deseas eliminar esta venta?</h3>
+    <p>Esta acción no se puede deshacer.</p>
+    <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem;">
+  <button id="btnCancelarEliminar" class="btn-modal-cancelar">Cancelar</button>
+  <button id="btnConfirmarEliminar" class="btn-modal-eliminar">Eliminar</button>
+</div>
+
   </div>
 </div>
 
-<script src="animaciones_ventas.js"></script>
+  <script src="animaciones_ventas.js?v=5"></script>
 </body>
 </html>
