@@ -1,4 +1,5 @@
 // Obtener los modales y botones
+document.addEventListener('DOMContentLoaded', function() {
 var modalAgregar = document.getElementById("modalAgregar");
 var modalEditar = document.getElementById("modalEditar"); // Modal de editar cliente
 var modalMensaje = document.getElementById("modalMensaje"); // Modal para el mensaje de éxito/error
@@ -9,6 +10,11 @@ var btnEditar = document.getElementsByClassName("btn-editar"); // Todos los boto
 var cerrarModalAgregar = document.getElementsByClassName("modal-cerrar")[0]; // Botón cerrar modal agregar
 var cerrarModalEditar = document.getElementById("cerrarModalEditar"); // Botón cerrar modal editar
 var cerrarModalMensaje = document.getElementById("cerrarModalMensaje"); // Botón cerrar modal mensaje
+
+  const modalConfirmarEliminar = document.getElementById('modalConfirmarEliminar');
+  const btnCerrarConfirmarEliminar = document.getElementById('cerrarModalConfirmarEliminar');
+  const btnCancelarEliminar = document.getElementById('btnCancelarEliminar');
+  const btnConfirmarEliminar = document.getElementById('btnConfirmarEliminar');
 
 // Obtener el formulario de agregar cliente
 var formAgregarCliente = document.getElementById("formAgregarCliente");
@@ -41,7 +47,7 @@ cerrarModalMensaje.onclick = function() {
   modalMensaje.style.display = "none";
 }
 
-// Cerrar los modales si se hace clic fuera de ellos
+// Cerrar los modales si se hace clic fuera de ellos (sin interferir con otros modales)
 window.onclick = function(event) {
   if (event.target == modalAgregar) {
     modalAgregar.style.display = "none";
@@ -49,6 +55,9 @@ window.onclick = function(event) {
     modalEditar.style.display = "none";
   } else if (event.target == modalMensaje) {
     modalMensaje.style.display = "none";
+  } else if (event.target == modalConfirmarEliminar) {
+      modalConfirmarEliminar.style.display = 'none';
+      idAEliminar = null;
   }
 }
 
@@ -79,7 +88,36 @@ formAgregarCliente.onsubmit = function(event) {
   xhr.send(formData);
 };
 
-// NOTA: 
-// No existe aún el formulario de editar cliente, 
-// por eso eliminamos el error que hacía que no funcionara el reload correctamente.
-// Cuando implementes el formulario de editar, podrás agregar un código similar aquí.
+// Variable para guardar el enlace de eliminar seleccionado
+let idAEliminar = null;
+
+// Asignar evento click a todos los botones "Eliminar" de la tabla
+ document.querySelectorAll('.btn-eliminar').forEach(btn => {
+    btn.addEventListener('click', function (event) {
+      event.preventDefault();
+      idAEliminar = this.getAttribute('data-id');
+      modalConfirmarEliminar.style.display = 'block';
+    });
+  });
+
+// Cancelar eliminar (botón cancelar)
+btnCancelarEliminar.onclick = function () {
+    modalConfirmarEliminar.style.display = 'none';
+    idAEliminar = null;
+  };
+
+// Confirmar eliminar (botón eliminar)
+btnConfirmarEliminar.onclick = function () {
+    if (idAEliminar) {
+      window.location.href = 'eliminar_cliente.php?id=' + idAEliminar;
+    }
+  };
+
+  // Cerrar modal con la X (cruz)
+  if (btnCerrarConfirmarEliminar) {
+    btnCerrarConfirmarEliminar.onclick = function () {
+    modalConfirmarEliminar.style.display = 'none';
+    idAEliminar = null;
+  };
+  }
+});

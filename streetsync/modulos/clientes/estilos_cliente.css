@@ -291,9 +291,41 @@ footer img {
   color: white;
 }
 
-.modal-content button:hover {
+
+
+/* Botones dentro del modal de confirmación */
+.btn-modal-cancelar,
+.btn-modal-eliminar {
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  width: 140px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Botón cancelar gris */
+.btn-modal-cancelar {
+  background-color: #5e1fb8; 
+  color: white;
+}
+
+.btn-modal-cancelar:hover {
   background-color: #5e1fb8;
 }
+
+/* Botón eliminar rojo */
+.btn-modal-eliminar {
+  background-color: #f44336;
+  color: white;
+}
+
+.btn-modal-eliminar:hover {
+  background-color: #d32f2f;
+}
+
 
 /* Animaciones */
 @keyframes fadeIn {
