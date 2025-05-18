@@ -54,39 +54,40 @@ if (isset($_POST['buscar'])) {
           <div class="ventas-list">
             <?php
             if ($result->num_rows > 0) {
-                echo "<div class='tabla-container'>
-                        <table class='tabla-ventas'>
-                          <tr>
-                            <th>Fecha</th>
-                            <th>Cliente</th>
-                            <th>Producto</th>
-                            <th>Cantidad</th>
-                            <th>Precio Unitario</th>
-                            <th>Total</th>
-                            <th>Acciones</th>
-                          </tr>";
-                while ($row = $result->fetch_assoc()) {
-                    echo "<tr>
-                            <td>" . $row["fecha"] . "</td>
-                            <td>" . $row["cliente_nombre"] . "</td>
-                            <td>" . $row["producto_nombre"] . "</td>
-                            <td>" . $row["cantidad"] . "</td>
-                            <td>$" . number_format($row["precio_unitario"], 2) . "</td>
-                            <td>$" . number_format($row["total"], 2) . "</td>
-                            <td>
-                              <button class='btn-editar' data-id='" . $row["reporte_id"] . "'>Editar</button>
-                              <button class='btn-eliminar' data-id='" . $row["reporte_id"] . "'>Eliminar</button>
-
-                          </td>
-                          </tr>";
-                }
-                echo "</table>
-                      </div>";
-            } else {
-                echo "No se encontraron reportes de ventas.";
-            }
-            $conn->close();
-            ?>
+    echo "<div class='tabla-container'>
+            <table class='tabla-ventas'>
+              <tr>
+                <th>Fecha</th>
+                <th>Cliente</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Total</th>
+                <th>Acciones</th>
+              </tr>";
+    while ($row = $result->fetch_assoc()) {
+        echo '<tr>';
+        echo '  <td>' . $row["fecha"] . '</td>';
+        echo '  <td>' . $row["cliente_nombre"] . '</td>';
+        echo '  <td>' . $row["producto_nombre"] . '</td>';
+        echo '  <td>' . $row["cantidad"] . '</td>';
+        echo '  <td>$' . number_format($row["precio_unitario"], 2) . '</td>';
+        echo '  <td>$' . number_format($row["total"], 2) . '</td>';
+        echo '  <td>';
+        echo '    <div class="acciones-botones">';
+        echo '      <button class="btn-editar" data-id="' . $row["reporte_id"] . '">Editar</button>';
+        echo '      <button class="btn-eliminar" data-id="' . $row["reporte_id"] . '">Eliminar</button>';
+        echo '    </div>';
+        echo '  </td>';
+        echo '</tr>';
+    }
+    echo "</table>
+          </div>";
+} else {
+    echo "No se encontraron reportes de ventas.";
+}
+$conn->close();
+?>
           </div>
         </div>
       </div>
