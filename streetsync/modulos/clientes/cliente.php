@@ -72,7 +72,7 @@ if (isset($_POST['buscar'])) {
                             <td>" . htmlspecialchars($row["direccion"]) . "</td>
                             <td>" . htmlspecialchars($row["fecha_registro"]) . "</td>
                             <td>
-                              <button class='btn-editar' data-id='" . $row["cliente_id"] . "' id='abrirModalEditar'>Editar</button>
+                              <button class='btn-editar' data-id='" . $row["cliente_id"] . "' id=''>Editar</button>
                               <button class='btn-eliminar' data-id='" . $row["cliente_id"] . "'id=''>Eliminar</button>
                           </td>
                           </tr>";

@@ -75,7 +75,7 @@ if (isset($_POST['buscar'])) {
                             <td>$" . number_format($row["total"], 2) . "</td>
                             <td>
                               <button class='btn-editar' data-id='" . $row["reporte_id"] . "'>Editar</button>
-<button class='btn-eliminar' data-id='" . $row["reporte_id"] . "'>Eliminar</button>
+                              <button class='btn-eliminar' data-id='" . $row["reporte_id"] . "'>Eliminar</button>
 
                           </td>
                           </tr>";
