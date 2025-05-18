@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>StreetSync | Crear Cuenta</title>
+<link rel="icon" href="../../imagenes/logo-deuss.png" type="image/png" />
+<link rel="stylesheet" href="usuario.css" />
+</head>
+<body>
+<div class="contenido">
+    <h1 class="titulo fade-in">Crear Cuenta</h1>
+
+    <form id="formRegistro" class="fade-in">
+    <div class="form-group">
+        <label for="nombre">Nombre completo</label>
+        <input type="text" id="nombre" name="nombre" class="form-content" required />
+
+        <label for="correo">E-mail</label>
+        <input type="email" id="correo" name="correo" class="form-content" required />
+
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" name="password" class="form-content" required />
+
+        <label for="repetir">Repetir Contraseña</label>
+        <input type="password" id="repetir" name="repetir" class="form-content" required />
+
+        <p class="parrafo">Mínimo 8 caracteres incluyendo una minúscula, una mayúscula y un número.</p>
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="submit animar-glow">Crear Cuenta</button>
+
+        <div class="form-links">
+        <p>¿Ya tienes cuenta? <a href="../login_pagina/login.html">Iniciar Sesión</a></p>
+        </div>
+    </div>
+
+    <div id="respuesta"></div>
+    </form>
+</div>
+
+
+<script src="usuario.js"></script>
+</body>
+</html>

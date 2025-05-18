@@ -3,19 +3,20 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="rrhh.css"/>
-  <link rel="icon" href="../../../imagenes/logo-transparent.png" type="image/png" />
   <title>StreetSync | DEUSS – RRHH</title>
+  <link rel="stylesheet" href="rrhh.css?v=10"/>
+  <link rel="icon" href="../../../imagenes/logo-transparent.png" type="image/png" />
 </head>
 <body>
+
   <!-- Botón volver -->
   <a href="../modulos.html" class="btn-volver">&#8592;</a>
-  
+
   <div class="container">
     <h2>Registrar empleado</h2>
 
     <form id="formEmpleado">
-      <input type="hidden" id="id" name="id" value=""/>
+      <input type="hidden" id="id" name="id"/>
 
       <label for="nombre">Nombre:</label>
       <input type="text" id="nombre" name="nombre" required/>
@@ -42,6 +43,8 @@
     <div id="tablaContainer"></div>
   </div>
 
-  <script src="rrhh.js"></script>
+  <!-- Script que gestiona la lógica del CRUD -->
+  <script src="rrhh.js?v=10"></script>
+
 </body>
 </html>

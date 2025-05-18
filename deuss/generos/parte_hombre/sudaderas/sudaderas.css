@@ -1,0 +1,335 @@
+/* General */
+* {
+background: white;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Segoe UI', sans-serif;
+}
+.seleccionar-genero a {
+text-decoration: none;
+color: black;
+font-weight: 700;
+font-size: 1.2rem;
+}
+
+.seleccionar-genero a:hover {
+text-decoration: underline;
+}
+
+
+.grid-prendas {
+display: grid;
+grid-template-columns: repeat(2, 1fr); /* 🔧 Dos columnas fijas */
+gap: 4rem 3rem;
+padding: 4rem;
+justify-content: center;
+max-width: 1100px;
+margin: 0 auto;
+}
+
+
+.grid-prendas > div {
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+width: 100%;
+}
+
+/* Encabezado */
+.superiror-section {
+position: relative;
+}
+
+.barra-superior {
+position: relative;
+}
+
+.seleccion {
+display: flex;
+align-items: center;
+justify-content: flex-start;
+gap: 10rem;
+padding: 1rem 2rem;
+flex-wrap: wrap;
+}
+
+.titulo {
+font-size: 2.5rem;
+font-weight: bold;
+color: black;
+cursor: pointer;
+text-align: center;
+}
+
+.seleccionar-genero {
+display: flex;
+gap: 3rem;
+font-weight: 700;
+cursor: pointer;
+flex-wrap: wrap;
+}
+
+.seleccion1, .seleccion2 {
+position: relative;
+padding-bottom: 6px;
+}
+
+.seleccion1::after, .seleccion2::after {
+content: "";
+position: absolute;
+width: 0;
+height: 2px;
+background-color: black;
+left: 50%;
+bottom: -2px;
+transform: translateX(-50%);
+transition: width 0.4s ease;
+}
+
+.seleccion1:hover::after, .seleccion2:hover::after {
+width: 100%;
+}
+
+/* Botones */
+.btns-superior {
+display: flex;
+align-items: center;
+gap: 1rem;
+position: absolute;
+top: 1.5rem;
+right: 2rem;
+}
+
+.btn-white {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+background-color: white;
+color: black;
+border: 1px solid black;
+border-radius: 50px;
+padding: 0.5rem 1rem;
+font-weight: bold;
+font-size: 1.2rem;
+cursor: pointer;
+text-decoration: none;
+transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Catálogo (tipos de camisetas) */
+.tipos {
+display: flex;
+justify-content: center;
+padding: 4rem 2rem;
+}
+
+.tipos > div {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 2rem;
+width: 100%;
+max-width: 1300px;
+justify-items: center;
+}
+
+/* Imagen del producto */
+.tipos-camisa {
+width: 100%;
+border-radius: 8px;
+transition: transform 0.3s ease;
+cursor: pointer;
+}
+
+.tipos-camisa:hover {
+transform: scale(1.05);
+}
+
+/* Nombre y precio */
+.nombre-camisa {
+font-weight: bold;
+font-size: 16px;
+margin-top: 10px;
+color: #000;
+text-align: left;
+width: 100%;
+}
+
+.precio-camisa {
+font-size: 14px;
+color: #555;
+margin-top: 4px;
+text-align: left;
+width: 100%;
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+.seleccion {
+    gap: 4rem;
+    justify-content: center;
+    text-align: center;
+}
+
+.seleccionar-genero {
+    gap: 2rem;
+    justify-content: center;
+}
+
+.btns-superior {
+    position: static;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+}
+
+/* Aplica estilo solo dentro del catálogo de camisetas */
+.grid-prendas .tipo1,
+.grid-prendas .tipo2,
+.grid-prendas .tipo3,
+.grid-prendas .tipo4,
+.grid-prendas .tipo5 {
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+width: 100%;
+}
+
+.grid-prendas .nombre-camisa,
+.grid-prendas .precio-camisa {
+text-align: left;
+width: 100%;
+margin-left: 0.2rem;
+}
+/* Imagen del pantalón */
+.tipos-jean {
+width: 100%;
+border-radius: 8px;
+transition: transform 0.3s ease;
+cursor: pointer;
+}
+
+.tipos-jean:hover {
+transform: scale(1.05);
+}
+
+/* Nombre y precio del pantalón */
+.nombre-jean {
+font-weight: bold;
+font-size: 16px;
+margin-top: 10px;
+color: #000;
+text-align: left;
+width: 100%;
+}
+
+.precio-jean {
+font-size: 14px;
+color: #555;
+margin-top: 4px;
+text-align: left;
+width: 100%;
+}
+
+.tipos-sudaderas {
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.tipos-sudaderas:hover {
+  transform: scale(1.05);
+}
+
+/* Nombre y precio de la sudadera */
+.nombre-sudaderas {
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 10px;
+  color: #000;
+  text-align: left;
+  width: 100%;
+}
+
+.precio-sudaderas {
+  font-size: 14px;
+  color: #555;
+  margin-top: 4px;
+  text-align: left;
+  width: 100%;
+}
+
+
+/* Estilo responsive (opcional si ya aplican los de camisetas) */
+@media screen and (max-width: 768px) {
+.nombre-jean {
+    font-size: 14px;
+}
+
+.precio-jean {
+    font-size: 13px;
+}
+}
+
+
+
+@media screen and (max-width: 768px) {
+.seleccion {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    text-align: center;
+}
+
+.seleccionar-genero {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    text-align: center;
+}
+
+.tipos > div {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.tipos-camisa {
+    max-width: 100%;
+}
+
+.nombre-camisa {
+    font-size: 14px;
+}
+
+.precio-camisa {
+    font-size: 13px;
+}
+}
+
+@media screen and (max-width: 480px) {
+.tipos-camisa {
+    max-width: 100%;
+}
+
+.nombre-camisa {
+    font-size: 14px;
+}
+
+.precio-camisa {
+    font-size: 13px;
+}
+}
+
+/* Fade-in */
+.fade-in {
+opacity: 0;
+animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+to {
+    opacity: 1;
+}
+}

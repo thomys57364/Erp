@@ -8,10 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function submitFormEmpleado(e) {
   e.preventDefault();
+
   const form = e.currentTarget;
   const formData = new FormData(form);
+  const id = formData.get('id');
 
-  const isUpdate = !!formData.get('id');
+  const isUpdate = id !== null && id !== '';
   const url = isUpdate
     ? 'CRUD_RRHH/actualizar_empleado.php'
     : 'CRUD_RRHH/registrar_empleado.php';
@@ -20,36 +22,46 @@ function submitFormEmpleado(e) {
     method: 'POST',
     body: formData
   })
-  .then(res => res.json())
-  .then(data => {
-    const resp = document.getElementById('respuesta');
-    resp.style.color = data.error ? 'red' : 'green';
-    resp.innerText = data.mensaje || data.error || '';
+    .then(res => res.text()) // ✅ Obtener texto crudo primero
+    .then(text => {
+      try {
+        const data = JSON.parse(text); // Intentar parsear como JSON
 
-    form.reset();
-    form.querySelector('input[name="id"]').value = '';
-    cargarTablaEmpleados();
-  })
-  .catch(err => {
-    console.error(err);
-    document.getElementById('respuesta').innerText = 'Error en la conexión.';
-  });
+        const resp = document.getElementById('respuesta');
+        resp.style.color = data.error ? 'red' : 'green';
+        resp.innerText = data.mensaje || data.error || '';
+
+        form.reset();
+        form.querySelector('input[name="id"]').value = '';
+        cargarTablaEmpleados();
+      } catch (err) {
+        console.error('❌ No es JSON válido:', text);
+        document.getElementById('respuesta').innerText = 'Error del servidor. Revisa consola.';
+      }
+    })
+    .catch(err => {
+      console.error('⛔ Error enviando formulario:', err);
+      document.getElementById('respuesta').innerText = 'Error en la conexión.';
+    });
 }
 
 function cargarTablaEmpleados() {
   fetch('CRUD_RRHH/listar_empleados.php')
     .then(res => res.json())
     .then(lista => {
+      if (!Array.isArray(lista)) {
+        console.error('⚠️ La respuesta no es una lista válida:', lista);
+        return;
+      }
+
       empleadosList = lista;
       const cont = document.getElementById('tablaContainer');
 
-      // ✅ NUEVO: si no hay empleados, limpia y muestra un mensaje
       if (lista.length === 0) {
         cont.innerHTML = '<p style="text-align:center; margin-top:1rem;">No hay empleados registrados.</p>';
         return;
       }
 
-      // Si hay empleados, mostrar la tabla
       cont.innerHTML = `
         <h3>Lista de Empleados</h3>
         <table id="tablaRRHH" border="1" cellpadding="4">
@@ -85,7 +97,7 @@ function cargarTablaEmpleados() {
         tbody.appendChild(tr);
       });
 
-      cont.querySelectorAll('.delete').forEach(btn => {
+      tbody.querySelectorAll('.delete').forEach(btn => {
         btn.addEventListener('click', () => {
           if (confirm('¿Eliminar este empleado?')) {
             eliminarEmpleado(btn.dataset.id);
@@ -93,40 +105,38 @@ function cargarTablaEmpleados() {
         });
       });
 
-      cont.querySelectorAll('.edit').forEach(btn => {
+      tbody.querySelectorAll('.edit').forEach(btn => {
         btn.addEventListener('click', () => editarEmpleado(btn.dataset.id));
       });
     })
-    .catch(err => console.error('Error listando empleados:', err));
+    .catch(err => {
+      console.error('⚠️ Error listando empleados:', err);
+    });
 }
-
 
 function eliminarEmpleado(id) {
   const fd = new FormData();
   fd.append('id', id);
+
   fetch('CRUD_RRHH/eliminar_empleado.php', {
     method: 'POST',
     body: fd
   })
-  .then(res => res.json())
-  .then(data => {
-    const resp = document.getElementById('respuesta');
-    resp.style.color = data.error ? 'red' : 'green';
-    resp.innerText = data.mensaje || data.error || '';
-    cargarTablaEmpleados();
-  })
-  .catch(err => {
-    console.error(err);
-    document.getElementById('respuesta').innerText = 'Error al eliminar.';
-  });
+    .then(res => res.json())
+    .then(data => {
+      const resp = document.getElementById('respuesta');
+      resp.style.color = data.error ? 'red' : 'green';
+      resp.innerText = data.mensaje || data.error || '';
+      cargarTablaEmpleados();
+    })
+    .catch(err => {
+      console.error('⛔ Error al eliminar empleado:', err);
+      document.getElementById('respuesta').innerText = 'Error al eliminar.';
+    });
 }
 
 function editarEmpleado(id) {
-  console.log('Clic en editar ID:', id);
-  console.log('Lista empleadosList:', empleadosList);
-
   const emp = empleadosList.find(e => e.id == id);
-  console.log('Empleado encontrado:', emp);
   if (!emp) {
     alert('No se encontró el empleado con ID: ' + id);
     return;
