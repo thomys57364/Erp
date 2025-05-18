@@ -21,7 +21,7 @@ if (isset($_POST['buscar'])) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Modulo Clientes/Proveedores</title>
-  <link rel="stylesheet" href="estilos_cliente.css?v=7" />
+  <link rel="stylesheet" href="estilos_cliente.css?v=8" />
   <link rel="icon" href="../../../imagenes/logo-transparent.png" type="image/png" />
 </head>
 <body>
@@ -65,18 +65,22 @@ if (isset($_POST['buscar'])) {
                             <th>Acciones</th>
                           </tr>";
                 while ($row = $result->fetch_assoc()) {
-                    echo "<tr>
-                            <td>" . htmlspecialchars($row["nombre"] . " " . $row["apellido"]) . "</td>
-                            <td>" . htmlspecialchars($row["email"]) . "</td>
-                            <td>" . htmlspecialchars($row["telefono"]) . "</td>
-                            <td>" . htmlspecialchars($row["direccion"]) . "</td>
-                            <td>" . htmlspecialchars($row["fecha_registro"]) . "</td>
-                            <td>
-                              <button class='btn-editar' data-id='" . $row["cliente_id"] . "' id=''>Editar</button>
-                              <button class='btn-eliminar' data-id='" . $row["cliente_id"] . "'id=''>Eliminar</button>
-                          </td>
-                          </tr>";
-                }
+    echo '<tr>';
+    echo '  <td>' . htmlspecialchars($row["nombre"] . ' ' . $row["apellido"]) . '</td>';
+    echo '  <td>' . htmlspecialchars($row["email"]) . '</td>';
+    echo '  <td>' . htmlspecialchars($row["telefono"]) . '</td>';
+    echo '  <td>' . htmlspecialchars($row["direccion"]) . '</td>';
+    echo '  <td>' . htmlspecialchars($row["fecha_registro"]) . '</td>';
+    // aquí la celda de acciones con los botones alineados
+    echo '  <td>';
+    echo '    <div class="acciones-botones">';
+    echo '      <button class="btn-editar" data-id="' . $row["cliente_id"] . '">Editar</button>';
+    echo '      <button class="btn-eliminar" data-id="' . $row["cliente_id"] . '">Eliminar</button>';
+    echo '    </div>';
+    echo '  </td>';
+    echo '</tr>';
+}
+
                 echo "</table>
                       </div>";
             } else {
@@ -151,6 +155,6 @@ if (isset($_POST['buscar'])) {
   </div>
 </div>
 
-  <script src="animaciones_cliente.js?v=7"></script>
+  <script src="animaciones_cliente.js?v=8"></script>
 </body>
 </html>

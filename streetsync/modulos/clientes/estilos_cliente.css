@@ -219,6 +219,14 @@ main {
   background-color: #d32f2f;
   box-shadow: 0 5px 15px rgba(211, 47, 47, 0.5);
 }
+/* Alinear botones horizontalmente dentro de la tabla de clientes */
+.acciones-botones {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
 
 /* Footer */
 footer {
