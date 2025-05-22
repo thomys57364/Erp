@@ -2,8 +2,8 @@
 include '../../../conexion/conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
-    $cliente_id = intval($_GET['id']);
-    $sql = "SELECT cliente_id, nombre, apellido, email, telefono, direccion FROM clientes WHERE cliente_id = $cliente_id";
+    $id = intval($_GET['id']);
+    $sql = "SELECT id, nombre, correo, telefono, direccion FROM usuarios WHERE id = $id";
     $result = $conn->query($sql);
     if ($result && $result->num_rows > 0) {
         $cliente = $result->fetch_assoc();
@@ -18,14 +18,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $cliente_id = intval($_POST['cliente_id']);
+    $id = intval($_POST['id']);
     $nombre = $_POST['nombre'];
-    $apellido = $_POST['apellido'];
-    $email = $_POST['email'];
+    
+    $correo = $_POST['correo'];
     $telefono = $_POST['telefono'];
     $direccion = $_POST['direccion'];
 
-    $sql = "UPDATE clientes SET nombre='$nombre', apellido='$apellido', email='$email', telefono='$telefono', direccion='$direccion' WHERE cliente_id=$cliente_id";
+    $sql = "UPDATE usuarios SET nombre='$nombre',  correo='$correo', telefono='$telefono', direccion='$direccion' WHERE id=$id";
 
     if ($conn->query($sql) === TRUE) {
         // Después de actualizar, redirigir o mostrar mensaje
