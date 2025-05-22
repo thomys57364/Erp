@@ -18,7 +18,7 @@ document.getElementById('formRegistro').addEventListener('submit', function (e) 
     formData.append('correo', correo);
     formData.append('password', password);
 
-    fetch('registrar_usuario.php', {
+    fetch('registrar_usuario.php?v=8', {
     method: 'POST',
     body: formData
     })
