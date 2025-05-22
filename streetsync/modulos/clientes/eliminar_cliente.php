@@ -7,7 +7,7 @@ if (isset($_GET['id'])) {
     $cliente_id = $_GET['id'];
 
     // Eliminar el cliente de la base de datos
-    $sql = "DELETE FROM clientes WHERE cliente_id = $cliente_id";
+    $sql = "DELETE FROM usuarios WHERE id = $cliente_id";
     
     if ($conn->query($sql) === TRUE) {
         echo "Cliente eliminado exitosamente";
