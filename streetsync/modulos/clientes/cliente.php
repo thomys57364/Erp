@@ -3,14 +3,14 @@
 include '../../../conexion/conexion.php';
 
 // Realizar la consulta SQL para obtener los datos de los clientes
-$sql = "SELECT * FROM clientes";
+$sql = "SELECT * FROM usuarios";
 $result = $conn->query($sql);
 
 // Verificar si se ha realizado una búsqueda
 if (isset($_POST['buscar'])) {
     $busqueda = $_POST['buscar'];
     // Modificar la consulta para filtrar por nombre, email, teléfono, etc.
-    $sql = "SELECT * FROM clientes WHERE nombre LIKE '%$busqueda%' OR apellido LIKE '%$busqueda%' OR email LIKE '%$busqueda%'";
+    $sql = "SELECT * FROM usuarios WHERE nombre LIKE '%$busqueda%' OR correo LIKE '%$busqueda%'";
     $result = $conn->query($sql);
 }
 ?>
@@ -21,7 +21,7 @@ if (isset($_POST['buscar'])) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Modulo Clientes/Proveedores</title>
-  <link rel="stylesheet" href="estilos_cliente.css?v=8" />
+  <link rel="stylesheet" href="estilos_cliente.css?v=7" />
   <link rel="icon" href="../../../imagenes/logo-transparent.png" type="image/png" />
 </head>
 <body>
@@ -58,29 +58,25 @@ if (isset($_POST['buscar'])) {
                         <table class='tabla-clientes'>
                           <tr>
                             <th>Nombre</th>
-                            <th>Email</th>
+                            <th>correo</th>
                             <th>Teléfono</th>
                             <th>Dirección</th>
                             <th>Fecha de Registro</th>
                             <th>Acciones</th>
                           </tr>";
                 while ($row = $result->fetch_assoc()) {
-    echo '<tr>';
-    echo '  <td>' . htmlspecialchars($row["nombre"] . ' ' . $row["apellido"]) . '</td>';
-    echo '  <td>' . htmlspecialchars($row["email"]) . '</td>';
-    echo '  <td>' . htmlspecialchars($row["telefono"]) . '</td>';
-    echo '  <td>' . htmlspecialchars($row["direccion"]) . '</td>';
-    echo '  <td>' . htmlspecialchars($row["fecha_registro"]) . '</td>';
-    // aquí la celda de acciones con los botones alineados
-    echo '  <td>';
-    echo '    <div class="acciones-botones">';
-    echo '      <button class="btn-editar" data-id="' . $row["cliente_id"] . '">Editar</button>';
-    echo '      <button class="btn-eliminar" data-id="' . $row["cliente_id"] . '">Eliminar</button>';
-    echo '    </div>';
-    echo '  </td>';
-    echo '</tr>';
-}
-
+                    echo "<tr>
+                            <td>" . htmlspecialchars($row["nombre"]) . "</td>
+                            <td>" . htmlspecialchars($row["correo"]) . "</td>
+                            <td>" . htmlspecialchars($row["telefono"]) . "</td>
+                            <td>" . htmlspecialchars($row["direccion"]) . "</td>
+                            <td>" . htmlspecialchars($row["fecha_registro"]) . "</td>
+                            <td>
+                              <button class='btn-editar' data-id='" . $row["id"] . "' id='abrirModalEditar'>Editar</button>
+                              <button class='btn-eliminar' data-id='" . $row["id"] . "'id=''>Eliminar</button>
+                          </td>
+                          </tr>";
+                }
                 echo "</table>
                       </div>";
             } else {
@@ -106,8 +102,8 @@ if (isset($_POST['buscar'])) {
       <h3>Agregar Cliente</h3>
       <form action="agregar_cliente.php" method="POST" id="formAgregarCliente">
         <input type="text" name="nombre" placeholder="Nombre" required />
-        <input type="text" name="apellido" placeholder="Apellido" required />
-        <input type="email" name="email" placeholder="Email" required />
+        
+        <input type="correo" name="correo" placeholder="correo" required />
         <input type="text" name="telefono" placeholder="Teléfono" required />
         <input type="text" name="direccion" placeholder="Dirección" required />
         <button type="submit" class="btn-agregar">Agregar</button>
@@ -129,10 +125,10 @@ if (isset($_POST['buscar'])) {
     <span class="close" id="cerrarModalEditar">&times;</span>
     <h3>Editar Cliente</h3>
     <form id="formEditarCliente" method="POST" action="editar_cliente.php">
-      <input type="hidden" name="cliente_id" id="editClienteId" />
+      <input type="hidden" name="id" id="editClienteId" />
       <input type="text" name="nombre" id="editNombre" placeholder="Nombre" required />
-      <input type="text" name="apellido" id="editApellido" placeholder="Apellido" required />
-      <input type="email" name="email" id="editEmail" placeholder="Email" required />
+      
+      <input type="correo" name="correo" id="editEmail" placeholder="correo" required />
       <input type="text" name="telefono" id="editTelefono" placeholder="Teléfono" required />
       <input type="text" name="direccion" id="editDireccion" placeholder="Dirección" required />
       <button type="submit" class="btn-agregar">Guardar Cambios</button>
@@ -155,6 +151,6 @@ if (isset($_POST['buscar'])) {
   </div>
 </div>
 
-  <script src="animaciones_cliente.js?v=8"></script>
+  <script src="animaciones_cliente.js?v=7"></script>
 </body>
 </html>
