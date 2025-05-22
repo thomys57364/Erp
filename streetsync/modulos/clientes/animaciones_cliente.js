@@ -32,9 +32,9 @@ for (let i = 0; i < btnEditar.length; i++) {
       .then(response => response.json())
       .then(data => {
         // Rellenar inputs del modal
-        document.getElementById('editClienteId').value = data.cliente_id;
+        document.getElementById('editClienteId').value = data.id;
         document.getElementById('editNombre').value = data.nombre;
-        document.getElementById('editApellido').value = data.apellido;
+        
         document.getElementById('editEmail').value = data.email;
         document.getElementById('editTelefono').value = data.telefono;
         document.getElementById('editDireccion').value = data.direccion;
@@ -85,7 +85,7 @@ formAgregarCliente.onsubmit = function(event) {
   var formData = new FormData(this); // Capturar datos del formulario
 
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", "agregar_cliente.php", true);
+  xhr.open("POST", "agregar_cliente.php?v=7", true);
   xhr.onload = function() {
     if (xhr.status == 200) {
       var respuesta = JSON.parse(xhr.responseText); // Recibir respuesta JSON
