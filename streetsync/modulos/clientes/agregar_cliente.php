@@ -8,17 +8,17 @@ header('Content-Type: application/json'); // <--- AGREGAR ESTO
 $mensaje = '';
 
 // Verificar si los datos del formulario están disponibles
-if (isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['email']) && isset($_POST['telefono']) && isset($_POST['direccion'])) {
+if (isset($_POST['nombre'])  && isset($_POST['correo']) && isset($_POST['telefono']) && isset($_POST['direccion'])) {
     // Obtener los datos del formulario
     $nombre = $_POST['nombre'];
-    $apellido = $_POST['apellido'];
-    $email = $_POST['email'];
+    
+    $correo = $_POST['correo'];
     $telefono = $_POST['telefono'];
     $direccion = $_POST['direccion'];
 
     // Insertar el nuevo cliente en la base de datos
-    $sql = "INSERT INTO clientes (nombre, apellido, email, telefono, direccion) 
-            VALUES ('$nombre', '$apellido', '$email', '$telefono', '$direccion')";
+    $sql = "INSERT INTO usuarios (nombre, correo, telefono, direccion) 
+            VALUES ('$nombre', '$correo', '$telefono', '$direccion')";
     
     if ($conn->query($sql) === TRUE) {
         $mensaje = "Nuevo cliente agregado exitosamente";  // Mensaje de éxito
