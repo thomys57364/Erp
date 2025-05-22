@@ -18,7 +18,7 @@ document.getElementById('formRegistro').addEventListener('submit', function (e) 
     formData.append('correo', correo);
     formData.append('password', password);
 
-    fetch('/erp-erp/deuss/crear_usuario/registrar_usuario.php', {
+    fetch('registrar_usuario.php', {
     method: 'POST',
     body: formData
     })
