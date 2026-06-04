@@ -226,6 +226,6 @@ pago/pago.html                  → Ingresar dirección de envío + datos de tar
 
 ## Autores
 
-Proyecto desarrollado como trabajo universitario — **Vida Mayor**.
+Proyecto desarrollado como trabajo universitario 
 
 Tienda: **DEUSS** | Sistema ERP: **StreetSync**
