@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StreetSync | DEUSS</title>
+  <link rel="icon" href="../../imagenes/logo-deuss.png" type="image/png" />
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <div class="contenido">
+    <h1 class="titulo fade-in">DEUSS</h1>
+
+    <form id="formLogin" class="fade-in">
+      <div class="form-group fade-in">
+        <label for="correo">E-mail</label>
+        <input type="email" id="correo" name="correo" class="form-content" required>
+      </div>
+
+      <div class="form-group fade-in">
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" name="password" class="form-content" required>
+      </div>
+
+      <div class="form-actions fade-in">
+        <p class="link-recuperar fade-in">
+          ¿Olvidaste tu contraseña?
+          <a href="../recuperar_contraseña/recuperar_contra.html">Recuperar Contraseña</a>
+        </p>
+
+        <button type="submit" class="submit animar-glow">Iniciar Sesión</button>
+
+        <div class="form-links fade-in">
+          <p>¿No tienes cuenta? <a href="../crear_usuario/usuario.html">Regístrate</a></p>
+        </div>
+      </div>
+
+      <p id="respuesta" style="text-align:center; font-weight:bold; margin-top: 10px;"></p>
+    </form>
+  </div>
+
+<script src="login_form.js"></script>
+</body>
+</html>

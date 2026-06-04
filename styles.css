@@ -1,0 +1,277 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+}  
+
+.erp-section {
+  background: url('Imagenes/erp.jpg') no-repeat center center/cover;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+  animation: zoomIn 3s ease-out forwards;
+}
+  
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease;
+}
+
+.scroll-reveal.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.erp-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 1;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: fadeIn 1s ease forwards;
+}
+
+
+.erp-section .content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.logo {
+  width: 60px;
+  margin-bottom: 1rem;
+}
+
+.erp-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.erp-section p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn-white, .btn-purple {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: background 0.3s ease;
+}
+
+.btn-white {
+  background-color: white;
+  color: black;
+}
+
+.btn-white:hover {
+  background-color: #ccc;
+}
+
+.btn-purple {
+  background-color: #7e3ff2;
+  color: white;
+}
+
+.btn-purple:hover {
+  background-color: #9f5aff;
+}
+
+.store-section {
+  background-color: #fff;
+  color: #000;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.store-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.store-section p {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.top-logo {
+  background-color: #000;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+
+footer {
+  background-color: #000;
+  text-align: center;
+  padding: 1rem;
+}
+
+.footer-logo {
+  width: 80px;
+}
+
+/* Animaciones */
+.fade-in {
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: fadeIn 1s ease forwards;
+}
+
+.fade-in-delay {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 1.2s;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media Queries para Responsive Design */
+@media (max-width: 1024px) {
+  /* Estilos para Tablet */
+  .erp-section {
+      height: auto;
+      min-height: 80vh;
+      padding: 4rem 2rem;
+  }
+  
+  .erp-section h1 {
+      font-size: 2.2rem;
+  }
+  
+  .store-section h1 {
+      font-size: 2rem;
+  }
+  
+  .buttons {
+      flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Estilos para Tablet pequeña y móviles grandes */
+  .erp-section h1 {
+      font-size: 1.8rem;
+  }
+  
+  .erp-section p,
+  .store-section p {
+      font-size: 0.95rem;
+  }
+  
+  .store-section {
+      padding: 3rem 1.5rem;
+  }
+  
+  .btn-white, 
+  .btn-purple {
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Estilos para móviles */
+  .erp-section {
+      padding: 2rem 1rem;
+      background-attachment: scroll;
+  }
+  
+  .erp-section h1 {
+      font-size: 1.6rem;
+      margin-bottom: 0.8rem;
+  }
+  
+  .store-section h1 {
+      font-size: 1.7rem;
+  }
+  
+  .store-section h2 {
+      font-size: 1.3rem;
+  }
+  
+  .buttons {
+      flex-direction: column;
+      align-items: center;
+  }
+  
+  .btn-white, 
+  .btn-purple {
+      width: 100%;
+      max-width: 220px;
+      margin-bottom: 0.5rem;
+  }
+  
+  .footer-logo {
+      width: 70px;
+  }
+}
+
+@media (max-width: 360px) {
+  /* Estilos para móviles muy pequeños */
+  .erp-section h1 {
+      font-size: 1.4rem;
+  }
+  
+  .store-section {
+      padding: 2rem 1rem;
+  }
+  
+  .store-section h1 {
+      font-size: 1.5rem;
+  }
+}
+
+/* Asegurar que las imágenes sean responsivas */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Mejorar el footer para móviles */
+footer {
+  padding: 1.5rem 1rem;
+}
+
+/* Ajustar el logo superior para móviles */
+.top-logo {
+  padding: 0.8rem 0;
+}
+
+/* Asegurar que el body no tenga scroll horizontal */
+body {
+  overflow-x: hidden;
+}

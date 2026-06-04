@@ -1,0 +1,196 @@
+/* rrhh.css - Unificado con estilo de ventas */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #000;
+  color: #eee;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Botón volver */
+.btn-volver {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 1.8rem;
+  color: white;
+  text-decoration: none;
+  z-index: 1000;
+  transition: transform 0.2s ease;
+}
+.btn-volver:hover {
+  transform: scale(1.2);
+}
+
+/* Contenedor principal */
+.container {
+  background-color: #1a1a1a;
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 1200px;
+  width: 100%;
+  margin: 4rem auto;
+  box-shadow: 0 10px 30px rgba(126, 63, 242, 0.3);
+  color: #eee;
+}
+
+/* Título */
+.container h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+/* Formulario estilo grid */
+#formEmpleado {
+  display: grid;
+  grid-template-columns: auto 1fr auto 1fr;
+  column-gap: 1rem;
+  row-gap: 1rem;
+  align-items: center;
+}
+
+#formEmpleado label {
+  text-align: right;
+  font-weight: 500;
+}
+
+input[type="date"] {
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 10px;
+  color-scheme: light; /* <- fuerza el ícono oscuro visible */
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* cambia el ícono a blanco */
+}
+
+
+#formEmpleado input {
+  width: 100%;
+  padding: .65rem;
+  border: 1px solid #555;
+  border-radius: 8px;
+  background-color: #222;
+  color: #eee;
+  font-size: .95rem;
+}
+#formEmpleado input:focus {
+  outline: none;
+  border-color: #7e3ff2;
+  box-shadow: 0 0 6px #7e3ff2;
+}
+
+/* Botón guardar */
+#formEmpleado button {
+  grid-column: 1 / -1;
+  padding: .8rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  background-image: linear-gradient(135deg, #7e3ff2, #a18cff);
+  color: white;
+  box-shadow: 0 4px 15px rgba(126, 63, 242, 0.6);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+#formEmpleado button:hover {
+  background-image: linear-gradient(135deg, #5e1fb8, #7c3ff1);
+}
+
+/* Respuesta */
+#respuesta {
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+/* Tabla */
+#tablaContainer {
+  margin-top: 2.5rem;
+}
+
+#tablaContainer h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+#tablaRRHH {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  color: #ddd;
+  background-color: #111;
+  box-shadow: 0 0 15px rgba(126, 63, 242, 0.5);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+#tablaRRHH thead th {
+  background-color: #7e3ff2;
+  color: white;
+  padding: 14px 16px;
+  text-align: left;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+#tablaRRHH td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #444;
+}
+
+#tablaRRHH tr:hover {
+  background-color: #2a2a2a;
+}
+
+/* Botones de acción */
+#tablaRRHH .edit,
+#tablaRRHH .delete {
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  margin: 0 2px;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+#tablaRRHH .edit {
+  background-color: #4caf50;
+}
+#tablaRRHH .edit:hover {
+  background-color: #45a049;
+}
+
+#tablaRRHH .delete {
+  background-color: #f44336;
+}
+#tablaRRHH .delete:hover {
+  background-color: #d32f2f;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+  }
+  #formEmpleado {
+    grid-template-columns: auto 1fr;
+  }
+}

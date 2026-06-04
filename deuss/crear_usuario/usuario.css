@@ -1,0 +1,142 @@
+/* Fuente base */
+body {
+margin: 0;
+padding: 0;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background-color: #fdfdfd;
+color: #000;
+}
+
+/* Contenedor general */
+.contenido {
+max-width: 500px;
+margin: 60px auto;
+padding: 0 20px;
+}
+
+/* Título */
+.titulo {
+font-size: 2.5rem;
+font-weight: bold;
+margin-bottom: 2rem;
+}
+
+/* Formulario */
+form {
+display: flex;
+flex-direction: column;
+gap: 20px;
+}
+
+/* Grupo de campos */
+.form-group label {
+display: block;
+font-weight: 600;
+margin-bottom: 0.5px;
+}
+
+.form-content {
+width: 100%;
+padding: 11.5px;
+font-size: 1rem;
+border: none;
+background-color: #f0f0f0;
+border-radius: 8px;
+transition: background-color 0.3s ease;
+}
+
+.form-content:focus {
+outline: none;
+background-color: #e0e0e0;
+}
+
+/* Descripción de contraseña */
+.parrafo {
+font-size: 0.75rem;
+color: #888;
+margin-top: 13px;
+}
+
+/* Botón */
+.submit {
+margin: 20px auto 0 auto;
+display: block;  
+padding: 15px;
+background-color: #000;
+color: white;
+border: none;
+font-weight: bold;
+font-size: 1rem;
+border-radius: 8px;
+cursor: pointer;
+transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.submit:hover {
+background-color: #222;
+transform: scale(1.02);
+}
+
+/* Links abajo */
+.form-links {
+text-align: center;
+font-size: 0.95rem;
+margin-top: 12px;
+}
+
+.form-links a {
+color: #000;
+font-weight: 600;
+text-decoration: none;
+}
+
+.form-links a:hover {
+text-decoration: underline;
+}
+
+.popup {
+position: fixed;
+top: 20%;
+left: 50%;
+transform: translateX(-50%);
+background: #4caf50;
+color: white;
+padding: 1rem 2rem;
+border-radius: 8px;
+display: none;
+font-weight: bold;
+z-index: 1000;
+box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.popup.show {
+display: block;
+animation: fadeInOut 2.5s ease-in-out forwards;
+}
+
+@keyframes fadeInOut {
+0% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+10% { opacity: 1; transform: translateX(-50%) translateY(0); }
+90% { opacity: 1; }
+100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+}
+
+
+
+/* Animaciones */
+.fade-in {
+opacity: 0;
+animation: fadeIn 1s ease forwards;
+animation-delay: 0.2s;
+}
+
+@keyframes fadeIn {
+from {
+    opacity: 0;
+    transform: translateY(10px);
+}
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+}

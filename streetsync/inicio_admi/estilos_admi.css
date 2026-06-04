@@ -1,0 +1,168 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #000;
+  color: #000;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Botón volver */
+.btn-volver {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: white;
+  text-decoration: none;
+  z-index: 1000;
+  transition: transform 0.2s ease;
+}
+.btn-volver:hover {
+  transform: scale(1.2);
+}
+
+/* Logo superior */
+.logo-top {
+  text-align: center;
+  padding: 1rem 0;
+}
+.logo-top img {
+  width: 80px;
+}
+
+/* Contenedor principal */
+.login-container {
+  background-color: #fff;
+  margin: 0 auto;
+  width: 95%;
+  max-width: 1700px; 
+  display: flex;
+  border-radius: 5px;
+  overflow: hidden;
+  min-height: 750px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Lado izquierdo */
+.login-left {
+  flex: 1;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo-grande {
+  width: 90%;
+  max-width: 500px;
+}
+
+/* Lado derecho */
+.login-right {
+  flex: 1;
+  background-color: #fff;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.login-right h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.login-right p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+.login-right form {
+  display: flex;
+  flex-direction: column;
+}
+.login-right label {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+.login-right input {
+  padding: 0.7rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #888;
+  border-radius: 20px;
+  outline: none;
+}
+.login-right button {
+  padding: 0.7rem 1.5rem;
+  background-color: #7e3ff2;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background 0.3s ease;
+}
+.login-right button:hover {
+  background-color: #9f5aff;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem 0;
+}
+footer img {
+  width: 40px;
+}
+
+/* Animaciones */
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: all 1s ease;
+}
+.visible-slide {
+  opacity: 1;
+  transform: translateX(0);
+}
+.mensaje-error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .login-container {
+    flex-direction: column;
+    max-width: 95%;
+    min-height: auto;
+  }
+
+  .login-left {
+    order: 2;
+    padding: 2rem;
+  }
+
+  .login-right {
+    order: 1;
+    padding: 2rem;
+  }
+
+  /* No tocamos align-items del form */
+  .login-right button {
+    align-self: center; /* Solo centramos el botón */
+  }
+
+  .logo-grande {
+    max-width: 300px;
+  }
+}

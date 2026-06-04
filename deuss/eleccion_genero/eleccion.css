@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    image-orientation: center;
+}
+
+
+.top-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0; /* Espacio entre logo y otros elementos */
+}
+.top-logo h1{
+    font-size: 75px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.top-logo img {
+    width: 200px;
+    height: auto;
+}
+
+.seleccion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem; /* Espacio entre los elementos de selección */
+    margin: 3rem 0; /* Espacio entre la sección de selección y otros elementos */
+}
+.seleccion img{
+    border-radius: 4%;
+    margin: 3rem 0;
+    width: 570px; /* Ancho de la imagen */
+}
+
+.generos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 2rem auto;
+  max-width: 1200px;
+  padding: 0 1rem;
+  flex-wrap: wrap; /* importante: permite que se bajen una debajo de otra en pantallas pequeñas */
+}
+
+  
+  .genero {
+    width: 100%;
+    max-width: 500px; /* se ajusta en pantallas pequeñas */
+    border-radius: 4%;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  
+  .genero:hover {
+    transform: scale(1.03);
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .fade-in {
+    opacity: 0;
+    transform: translateY(-30px);
+    animation: fadeIn 0.8s ease forwards;
+  }
+  
+  
+
+
+@keyframes glowSlide {
+    0% {
+      background-position: 0% 50%;
+      box-shadow: 0 0 5px red;
+    }
+    50% {
+      background-position: 100% 50%;
+      box-shadow: 0 0 20px red;
+    }
+    100% {
+      background-position: 0% 50%;
+      box-shadow: 0 0 5px red;
+    }
+  }
+  
+  .animar-glow {
+    animation: glowSlide 1.2s ease-in-out;
+    background: linear-gradient(270deg, #fff, #ffe6e6, #fff);
+    background-size: 400% 400%;
+    box-shadow: 0 0 15px red;
+    border: 2px solid red;
+  }
+
+  @media screen and (max-width: 768px) {
+    .top-logo {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .top-logo h1 {
+        font-size: 2rem; /* Un poco más pequeño para móviles */
+        text-align: center;
+    }
+
+    .top-logo img {
+        width: 150px; /* Reducimos un poco el logo */
+    }
+
+    .generos {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .genero {
+        max-width: 90%; /* Que no sea más ancho que la pantalla */
+        width: 90%;
+    }
+
+    .seleccion {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        margin: 2rem 0;
+    }
+
+    .seleccion img {
+        width: 90%; /* También adaptamos las imágenes grandes */
+        margin: 1rem 0;
+    }
+}

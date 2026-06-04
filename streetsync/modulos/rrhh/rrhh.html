@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StreetSync | DEUSS – RRHH</title>
+  <link rel="stylesheet" href="rrhh.css?v=10"/>
+  <link rel="icon" href="../../../imagenes/logo-transparent.png" type="image/png" />
+</head>
+<body>
+
+  <!-- Botón volver -->
+  <a href="../modulos.html" class="btn-volver">&#8592;</a>
+
+  <div class="container">
+    <h2>Registrar empleado</h2>
+
+    <form id="formEmpleado">
+      <input type="hidden" id="id" name="id"/>
+
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required/>
+
+      <label for="correo">Correo:</label>
+      <input type="email" id="correo" name="correo" required/>
+
+      <label for="telefono">Teléfono:</label>
+      <input type="text" id="telefono" name="telefono"/>
+
+      <label for="cargo">Cargo:</label>
+      <input type="text" id="cargo" name="cargo"/>
+
+      <label for="salario">Salario:</label>
+      <input type="number" id="salario" step="0.01" name="salario"/>
+
+      <label for="fecha_ingreso">Fecha de ingreso:</label>
+      <input type="date" id="fecha_ingreso" name="fecha_ingreso"/>
+
+      <button type="submit">Guardar Empleado</button>
+    </form>
+
+    <div id="respuesta"></div>
+    <div id="tablaContainer"></div>
+  </div>
+
+  <!-- Script que gestiona la lógica del CRUD -->
+  <script src="rrhh.js?v=10"></script>
+
+</body>
+</html>

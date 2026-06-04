@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modulo Clientes/Proveedores</title>
+  <link rel="stylesheet" href="estilos_cliente.css?v=7" />
+  <link rel="icon" href="../../../imagenes/logo-transparent.png" type="image/png" />
+</head>
+<body>
+
+  <a href="../modulos.html" class="btn-volver">&#8592;</a>
+
+  <header class="logo-top">
+    <img src="../../../imagenes/logo-transparent.png" alt="Logo StreetSync" />
+    <h1>Administración de Clientes</h1>
+  </header>
+
+  <main>
+    <div class="modulos-grid">
+      <div class="modulo-card">
+        <div class="modulo-texto">
+          <div class="search-form">
+            <input type="text" id="inputBuscar" class="search-input" placeholder="Buscar cliente..." />
+            <div class="botones-form">
+              <button type="button" class="btn-buscar" id="btnBuscar">Actualizar</button>
+              <button type="button" class="btn-agregar" id="abrirModalAgregar">Agregar Cliente</button>
+            </div>
+          </div>
+          <div class="clientes-list" id="tabla-container"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="logo-top">
+    <img src="../../../imagenes/logo-transparent.png" alt="Logo StreetSync Footer" />
+  </footer>
+
+  <div id="modalAgregar" class="modal">
+    <div class="modal-content">
+      <span class="close modal-cerrar">&times;</span>
+      <h3>Agregar Cliente</h3>
+      <form id="formAgregarCliente">
+        <input type="text" name="nombre" placeholder="Nombre" required />
+        <input type="email" name="correo" placeholder="Correo" required />
+        <input type="text" name="telefono" placeholder="Teléfono" required />
+        <input type="text" name="direccion" placeholder="Dirección" required />
+        <button type="submit" class="btn-agregar">Agregar</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="modalMensaje" class="modal">
+    <div class="modal-content">
+      <span class="close" id="cerrarModalMensaje">&times;</span>
+      <h3 id="mensajeTexto"></h3>
+    </div>
+  </div>
+
+  <div id="modalEditar" class="modal">
+    <div class="modal-content">
+      <span class="close" id="cerrarModalEditar">&times;</span>
+      <h3>Editar Cliente</h3>
+      <form id="formEditarCliente">
+        <input type="hidden" name="id" id="editClienteId" />
+        <input type="text" name="nombre" id="editNombre" placeholder="Nombre" required />
+        <input type="email" name="correo" id="editEmail" placeholder="Correo" required />
+        <input type="text" name="telefono" id="editTelefono" placeholder="Teléfono" required />
+        <input type="text" name="direccion" id="editDireccion" placeholder="Dirección" required />
+        <button type="submit" class="btn-agregar">Guardar Cambios</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="modalConfirmarEliminar" class="modal">
+    <div class="modal-content">
+      <span class="close" id="cerrarModalConfirmarEliminar">&times;</span>
+      <h3>¿Estás seguro que deseas eliminar este cliente?</h3>
+      <p>Esta acción no se puede deshacer.</p>
+      <div style="display:flex;justify-content:center;gap:1rem;margin-top:1.5rem;">
+        <button id="btnCancelarEliminar" class="btn-modal-cancelar">Cancelar</button>
+        <button id="btnConfirmarEliminar" class="btn-modal-eliminar">Eliminar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="animaciones_cliente.js?v=7"></script>
+</body>
+</html>

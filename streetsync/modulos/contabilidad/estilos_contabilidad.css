@@ -1,0 +1,237 @@
+/* Reset de márgenes y padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #000;
+  color: #eee;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Botón volver */
+.btn-volver {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 1.8rem;
+  color: white;
+  text-decoration: none;
+  z-index: 1000;
+  transition: transform 0.2s ease;
+}
+
+.btn-volver:hover {
+  transform: scale(1.2);
+}
+
+/* Header */
+.logo-top {
+  text-align: center;
+  padding: 1.5rem 0;
+  background-color: #000;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+}
+
+.logo-top img {
+  width: 90px;
+  opacity: 0.9;
+  margin-bottom: 0.3rem;
+}
+
+.logo-top h1 {
+  color: #ffffff;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+/* Main */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: calc(100vh - 220px);
+  padding: 2rem 1rem;
+  width: 100%;
+}
+
+.modulo-card {
+  background-color: #1a1a1a;
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 1200px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(126, 63, 242, 0.3);
+  color: #eee;
+}
+
+/* Formulario búsqueda */
+.search-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.search-input {
+  padding: 12px 16px;
+  border: 1px solid #7e3ff2;
+  border-radius: 8px;
+  width: 280px;
+  font-size: 1rem;
+  background-color: #222;
+  color: #eee;
+}
+
+.botones-form {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-buscar,
+.btn-agregar {
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  color: white;
+  box-shadow: 0 4px 15px rgba(126, 63, 242, 0.6);
+  transition: background-color 0.3s ease;
+}
+
+.btn-buscar {
+  background-image: linear-gradient(135deg, #7e3ff2, #a18cff);
+}
+
+.btn-buscar:hover {
+  background-image: linear-gradient(135deg, #5e1fb8, #7c3ff1);
+}
+
+.btn-agregar {
+  background-image: linear-gradient(135deg, #008cba, #00aaff);
+}
+
+.btn-agregar:hover {
+  background-image: linear-gradient(135deg, #007bb5, #0099ee);
+}
+
+/* Tabla contabilidad */
+.tabla-container {
+  max-height: 600px;
+  overflow-x: auto;
+  overflow-y: auto;
+  border-radius: 12px;
+  border: 1px solid #7e3ff2;
+  background-color: #111;
+  box-shadow: 0 0 15px rgba(126, 63, 242, 0.5);
+  margin-top: 20px;
+}
+
+.tabla-clientes {
+  width: 100%;
+  min-width: 1000px;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.95rem;
+  color: #ddd;
+}
+
+.tabla-clientes th,
+.tabla-clientes td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #444;
+}
+
+.tabla-clientes th {
+  background-color: #7e3ff2;
+  color: white;
+  font-weight: 700;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.tabla-clientes tr:hover {
+  background-color: #2a2a2a;
+}
+
+/* Botones de acciones */
+.btn-editar,
+.btn-eliminar {
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  margin: 0 3px;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.btn-editar {
+  background-color: #4caf50;
+}
+
+.btn-editar:hover {
+  background-color: #45a049;
+}
+
+.btn-eliminar {
+  background-color: #f44336;
+}
+
+.btn-eliminar:hover {
+  background-color: #d32f2f;
+}
+
+/* Footer */
+footer {
+  background-color: #000;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: auto;
+}
+
+footer img {
+  width: 40px;
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .search-form {
+    flex-direction: column;
+  }
+
+  .tabla-clientes {
+    min-width: 900px;
+  }
+
+  .tabla-clientes th,
+  .tabla-clientes td {
+    font-size: 0.85rem;
+    padding: 10px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tabla-clientes {
+    min-width: 700px;
+  }
+
+  .tabla-clientes th,
+  .tabla-clientes td {
+    font-size: 0.75rem;
+    padding: 8px 6px;
+  }
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio de sesión Administradores</title>
+  <link rel="icon" href="../../imagenes/logo-transparent.png" type="image/png" />
+  <link rel="stylesheet" href="estilos_admi.css" />
+</head>
+<body>
+
+  <!-- Botón volver -->
+  <a href="../../index.html" class="btn-volver">&#8592;</a>
+
+  <!-- Logo superior pequeño -->
+  <header class="logo-top slide-in-left">
+    <img src="../../imagenes/logo-transparent.png" alt="Logo StreetSync" />
+  </header>
+
+  <!-- Contenedor principal -->
+  <main class="login-container slide-in-left">
+    <!-- Lado izquierdo: logo grande -->
+    <div class="login-left">
+      <img src="../../imagenes/logo-transparent.png" alt="StreetSync Logo Grande" class="logo-grande" />
+    </div>
+
+    <!-- Lado derecho: formulario -->
+    <div class="login-right">
+      <h4>Iniciar</h4>
+      <h2>Acceso Seguro</h2>
+      <p>Ingresa tus credenciales para acceder a tu cuenta.</p>
+
+      <form id="form-login">
+          <label for="correo">Correo</label>
+          <input type="email" id="correo" name="correo" required />
+        
+          <label for="contrasena">Contraseña</label>
+          <input type="password" id="contrasena" name="contrasena" required />
+        
+          <button type="submit">Acceder</button>
+        
+          <!-- Mensaje de error aquí -->
+          <div id="mensaje-error" class="mensaje-error">Correo o contraseña incorrectos.</div>
+        </form>
+        
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer con logo -->
+  <footer class="logo-top slide-in-left">
+    <img src="../../imagenes/logo-transparent.png" alt="Logo StreetSync Footer" />
+  </footer>
+
+  <!-- Script de animaciones -->
+  <script src="animaciones_login.js"></script>
+</body>
+</html>

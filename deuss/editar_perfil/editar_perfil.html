@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StreetSync | DEUSS</title>
+  <link rel="icon" href="../../imagenes/logo-deuss.png" type="image/png" />
+  <link rel="stylesheet" href="editar_perfil.css" />
+</head>
+<body>
+  <div class="contenido">
+    <h1 class="titulo fade-in">Editar Perfil</h1>
+
+    <form id="formRegistro" class="fade-in">
+      <input type="hidden" id="correoOriginal" name="correoOriginal">
+      <div class="form-group">
+        <label for="nombre">Nombre completo</label>
+        <input type="text" id="nombre" name="nombre" class="form-content" required />
+
+        <label for="correo">E-mail</label>
+        <input type="email" id="correo" name="correo" class="form-content" required />
+
+        <label for="direccion">Direccion</label>
+        <input type="text" id="direccion" name="direccion" class="form-content" required />
+
+        <label for="telefono">Teléfono</label>
+        <input type="tel" id="telefono" name="telefono" class="form-content" required />
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="submit animar-glow">Guardar Cambios</button>
+        <button type="button" id="cerrarSesion" class="submit animar-glow">Cerrar Sesión</button>
+
+        <div class="form-links">
+          <p>¿Ya tienes cuenta? <a href="../login_pagina/login.html">Iniciar Sesión</a></p>
+        </div>
+      </div>
+
+      <div id="respuesta"></div>
+    </form>
+  </div>
+
+  <!-- ✅ Este debe ir siempre antes del </body> -->
+ <script src="./editar_perfil2.js?v=1"></script>
+</body>
+</html>

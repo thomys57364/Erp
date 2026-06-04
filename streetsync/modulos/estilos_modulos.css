@@ -1,0 +1,189 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #000;
+  color: #000;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Botón volver */
+.btn-volver {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 1.8rem;
+  color: white;
+  text-decoration: none;
+  z-index: 1000;
+  transition: transform 0.2s ease;
+}
+
+.btn-volver:hover {
+  transform: scale(1.2);
+}
+
+/* Header */
+.logo-top {
+  text-align: center;
+  padding: 1rem 0;
+  background-color: #000;
+}
+
+.logo-top img {
+  width: 80px;
+  opacity: 0.9;
+}
+
+.logo-top h1 {
+  color: white;
+  font-size: 2rem;
+  font-weight: 500;
+  margin-top: 0.3rem;
+}
+
+/* Main */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 200px);
+  padding: 2rem;
+}
+
+/* Grilla */
+.modulos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centra todas las tarjetas horizontalmente */
+  gap: 2.5rem;
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Tarjeta */
+.modulo-card {
+  background-color: #fff;
+  border-radius: 24px;
+  overflow: hidden;
+  height: 500px; /* Altura flexible */
+  width: 90%;
+  max-width: 400px; /* Límite para pantallas grandes */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.modulo-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.2);
+}
+
+.modulo-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+.modulo-texto {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.modulo-texto span {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: #888;
+  letter-spacing: 1px;
+}
+
+.modulo-texto h2 {
+  font-size: 1.5rem;
+  color: #7e3ff2;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.modulo-texto p {
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 1.2rem;
+}
+
+/* Botón */
+.btn-acceder {
+  background-color: transparent;
+  color: #7e3ff2;
+  border: 2px solid #7e3ff2;
+  padding: 0.5rem 1.4rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-acceder:hover {
+  background-color: #7e3ff2;
+  color: white;
+}
+
+/* Footer */
+footer {
+  background-color: #000;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: auto;
+}
+
+footer img {
+  width: 40px;
+  opacity: 0.8;
+}
+
+/* Animaciones */
+.fade-in {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.8s ease;
+}
+
+.visible-fade {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: all 1s ease;
+}
+
+.visible-slide {
+  opacity: 1;
+  transform: translateX(0);
+}
+@media (max-width: 768px) {
+  .modulo-card {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  main {
+    padding: 1rem;
+  }
+}

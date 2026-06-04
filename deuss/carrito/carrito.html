@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carrito | DEUSS</title>
+  <link rel="icon" href="../../Imagenes/logo-deuss.png" type="image/png" />
+  <link rel="stylesheet" href="carrito.css?v=10" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+</head>
+<body>
+  <section class="superiror-section fade-in">
+    <div class="barra-superior">
+      <div class="seleccion">
+        <h1 class="titulo fade-in" onclick="location.href='../eleccion_genero/eleccion.html'">DEUSS</h1>
+        <div class="seleccionar-genero fade-in"></div>
+      </div>
+
+      <!-- BOTONES UNIFICADOS -->
+      <div class="btns-superior fade-in">
+        <span id="usuarioNombre" class="btn-white">
+          <i class="fa-solid fa-user"></i> Iniciar Sesión
+        </span>
+
+        <button class="btn-white" onclick="location.href='carrito.html'">
+          <i class="fa-solid fa-cart-shopping"></i> Carrito
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="carrito-container fade-in" >
+    <h2>Cesta</h2>
+
+    <!-- Mensaje que aparece si carrito vacío -->
+    <p id="mensaje-vacio">Tu carrito está vacío.</p>
+
+    <!-- Contenedor para productos, oculto inicialmente -->
+    <div id="productos-carrito" style="display: none;">
+      <!-- Productos se añadirán dinámicamente aquí -->
+    </div>
+
+    <!-- Botón continuar compra, oculto inicialmente -->
+    <button id="btn-continuar" style="display: none;">Continuar con compra</button>
+  </section>
+  <script src="carrito.js?v=10"></script>
+</body>
+</html>

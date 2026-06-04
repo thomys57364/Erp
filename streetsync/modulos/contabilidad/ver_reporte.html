@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reporte Contable</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: #0f0f0f; color: #eee; padding: 2rem; }
+    h2 { text-align: center; margin-bottom: 2rem; font-size: 2rem; color: #a18cff; }
+    .contenedor { max-width: 1000px; margin: 0 auto; background-color: #1a1a1a; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(126,63,242,0.3); }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border-bottom: 1px solid #444; padding: 12px 16px; text-align: left; }
+    th { background-color: #7e3ff2; color: white; text-transform: uppercase; }
+    tr:hover { background-color: #2a2a2a; }
+    .resumen { margin-top: 30px; background-color: #222; padding: 1.5rem; border-radius: 12px; box-shadow: 0 0 15px rgba(126,63,242,0.2); }
+    .resumen p { font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .resumen strong { color: #a18cff; }
+    .balance-positivo { color: #4ade80; }
+    .balance-negativo { color: #f87171; }
+    .volver { display: inline-block; margin-top: 2rem; text-decoration: none; background-color: #7e3ff2; color: white; padding: 10px 20px; border-radius: 8px; transition: background-color 0.3s; }
+    .volver:hover { background-color: #5e1fb8; }
+    #sin-datos { text-align: center; padding: 2rem; color: #888; font-size: 1.1rem; }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <h2 id="titulo-reporte">Reporte Contable</h2>
+
+    <table id="tabla-reporte" style="display:none;">
+      <thead>
+        <tr><th>Fecha</th><th>Tipo</th><th>Concepto</th><th>Monto</th></tr>
+      </thead>
+      <tbody id="tbody-reporte"></tbody>
+    </table>
+    <p id="sin-datos" style="display:none;">No hay movimientos para el período seleccionado.</p>
+
+    <div class="resumen" id="resumen" style="display:none;">
+      <p><strong>Total Ingresos:</strong> <span id="total-ingresos">$0</span></p>
+      <p><strong>Total Egresos:</strong> <span id="total-egresos">$0</span></p>
+      <p><strong>Balance Final:</strong> <span id="balance"></span></p>
+    </div>
+
+    <div style="text-align:center;">
+      <a href="contabilidad.html" class="volver">← Volver a Contabilidad</a>
+    </div>
+  </div>
+
+  <script>
+    const meses = ['', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+      'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
+    const params = new URLSearchParams(window.location.search);
+    const mes = parseInt(params.get('mes')) || new Date().getMonth() + 1;
+    const anio = parseInt(params.get('anio')) || new Date().getFullYear();
+
+    document.getElementById('titulo-reporte').textContent = `Reporte Contable - ${meses[mes]} ${anio}`;
+
+    const todos = JSON.parse(localStorage.getItem('erp_contabilidad')) || [];
+    const filtrados = todos.filter(m => {
+      if (!m.fecha) return false;
+      const [y, mo] = m.fecha.split('-').map(Number);
+      return y === anio && mo === mes;
+    });
+
+    if (filtrados.length === 0) {
+      document.getElementById('sin-datos').style.display = 'block';
+    } else {
+      let ingresos = 0, egresos = 0;
+      const tbody = document.getElementById('tbody-reporte');
+      filtrados.forEach(m => {
+        const monto = Number(m.monto);
+        if (m.tipo === 'Ingreso') ingresos += monto;
+        else egresos += monto;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${m.fecha}</td><td>${m.tipo}</td><td>${m.concepto}</td><td>$${monto.toLocaleString('es-CO')}</td>`;
+        tbody.appendChild(tr);
+      });
+      const balance = ingresos - egresos;
+      document.getElementById('tabla-reporte').style.display = 'table';
+      document.getElementById('resumen').style.display = 'block';
+      document.getElementById('total-ingresos').textContent = '$' + ingresos.toLocaleString('es-CO');
+      document.getElementById('total-egresos').textContent = '$' + egresos.toLocaleString('es-CO');
+      const balanceEl = document.getElementById('balance');
+      balanceEl.textContent = '$' + Math.abs(balance).toLocaleString('es-CO') + (balance < 0 ? ' (déficit)' : '');
+      balanceEl.className = balance >= 0 ? 'balance-positivo' : 'balance-negativo';
+    }
+  </script>
+</body>
+</html>
